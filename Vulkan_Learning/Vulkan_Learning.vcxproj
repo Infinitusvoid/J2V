@@ -171,6 +171,7 @@
     <ClCompile Include="point_light_system.cpp" />
     <ClCompile Include="Procedural_Generation.cpp" />
     <ClCompile Include="simple_render_system.cpp" />
+    <ClCompile Include="Universe_Controller.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="first_app.h" />
@@ -192,6 +193,7 @@
     <ClInclude Include="Procedural_Generation.h" />
     <ClInclude Include="Procedural_ObjectData_Operations.h" />
     <ClInclude Include="simple_render_system.h" />
+    <ClInclude Include="Universe_Controller.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaderess\compile.bat" />

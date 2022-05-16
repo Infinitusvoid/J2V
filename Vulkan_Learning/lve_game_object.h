@@ -11,6 +11,12 @@
 
 namespace lve {
 
+    //How could I move all this inside Cosmos?
+    struct CosmosObjectState {
+        bool mark_as_invisible;
+        bool ready_for_deletion;
+    };
+
     struct TransformComponent {
         glm::vec3 translation{};
         glm::vec3 scale{ 1.f, 1.f, 1.f };
@@ -55,6 +61,8 @@ namespace lve {
         std::shared_ptr<Lve_model> model{};
         std::unique_ptr<PointLightComponent> pointLight = nullptr;
 
+        //Optional Cosmos
+        std::unique_ptr<CosmosObjectState> cosmos_object_state = nullptr;
     private:
         LveGameObject(id_t objId) : id{ objId } {}
 

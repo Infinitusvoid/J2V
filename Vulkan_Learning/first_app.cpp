@@ -20,7 +20,7 @@
 
 // cosmos
 #include "Procedural_Generation.h"
-
+#include "Universe_Controller.h"
 
 namespace lve {
 
@@ -76,6 +76,10 @@ namespace lve {
         viewerObject.transform.translation.z = -2.5f;
         KeyboardMovementController cameraController{};
 
+        //Cosmos
+        Cosmos::Universe_Controller universe_con;
+        //
+
         auto currentTime = std::chrono::high_resolution_clock::now();
         while (!lveWindow.shouldClose()) {
             glfwPollEvents();
@@ -100,6 +104,9 @@ namespace lve {
                     camera,
                     globalDescriptorSets[frameIndex],
                     gameObjects };
+
+                //cosmos update
+                universe_con.loop(lveWindow.getGLFWwindow(), frameInfo);
 
                 // update
                 GlobalUbo ubo{};
