@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32407.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vulkan_Learning", "Vulkan_Learning\Vulkan_Learning.vcxproj", "{043311F6-87EE-4CE4-9750-1536A97F347C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{043311F6-87EE-4CE4-9750-1536A97F347C}.Debug|x64.ActiveCfg = Debug|x64
+		{043311F6-87EE-4CE4-9750-1536A97F347C}.Debug|x64.Build.0 = Debug|x64
+		{043311F6-87EE-4CE4-9750-1536A97F347C}.Debug|x86.ActiveCfg = Debug|Win32
+		{043311F6-87EE-4CE4-9750-1536A97F347C}.Debug|x86.Build.0 = Debug|Win32
+		{043311F6-87EE-4CE4-9750-1536A97F347C}.Release|x64.ActiveCfg = Release|x64
+		{043311F6-87EE-4CE4-9750-1536A97F347C}.Release|x64.Build.0 = Release|x64
+		{043311F6-87EE-4CE4-9750-1536A97F347C}.Release|x86.ActiveCfg = Release|Win32
+		{043311F6-87EE-4CE4-9750-1536A97F347C}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {38920A9C-6EFB-49D5-BFE6-BAA45DF66CF4}
+	EndGlobalSection
+EndGlobal
