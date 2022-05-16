@@ -19,6 +19,9 @@
     <Filter Include="Source Files\shaders">
       <UniqueIdentifier>{aa6ef555-8398-4a9a-a2a4-b00ac821b480}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Cosmos">
+      <UniqueIdentifier>{052e471f-1766-40bc-98e8-85c70327ba09}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -65,6 +68,9 @@
     </ClCompile>
     <ClCompile Include="point_light_system.cpp">
       <Filter>Source Files\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Procedural_Generation.cpp">
+      <Filter>Source Files\Cosmos</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +121,15 @@
     </ClInclude>
     <ClInclude Include="point_light_system.h">
       <Filter>Source Files\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryLoger.h">
+      <Filter>Source Files\Cosmos</Filter>
+    </ClInclude>
+    <ClInclude Include="Procedural_Generation.h">
+      <Filter>Source Files\Cosmos</Filter>
+    </ClInclude>
+    <ClInclude Include="Procedural_ObjectData_Operations.h">
+      <Filter>Source Files\Cosmos</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
