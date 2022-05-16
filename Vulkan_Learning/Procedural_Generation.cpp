@@ -61,7 +61,7 @@ namespace Proc
             {{-.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
             {{.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
         };
-
+        
         Proc::Opr::vertices_randomize_positions(pobj, 0.5f);
 
 
@@ -72,11 +72,13 @@ namespace Proc
 
         Procedural_ObjectData* pobj = new Procedural_ObjectData();
 
-
-        float x = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        float y = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        float z = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        pobj->position = glm::vec3(x * 0.1, y * 0.1, z * 125);
+       
+            float x = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+            float y = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+            float z = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+            pobj->position = glm::vec3(x * 0.1, y * 0.1, z * 100 * 0.001f);
+        
+        
 
 
         //pobj.rotation = glm::vec3(0, 0, 0);
@@ -102,6 +104,7 @@ namespace Proc
         );
         */
 
+        
         Proc::Opr::add_circular(pobj,
             20,
             7.0f,
@@ -113,7 +116,7 @@ namespace Proc
             glm::vec3(0.0, 1, 0.2));
 
         data.push_back(pobj);
-
+        
 
 
 

@@ -31,6 +31,10 @@ namespace lve {
 		LveDevice lveDevice{ lveWindow };
 		LveRenderer lveRenderer{ lveWindow, lveDevice };
 
+		// Cosmos
+		void My_ProcedurallyGenerateNewObject_2();
+		// Cosmos
+
 		// note: order of declarations matters
 		std::unique_ptr<LveDescriptorPool> globalPool{};
 		LveGameObject::Map gameObjects;

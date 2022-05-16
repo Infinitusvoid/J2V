@@ -18,6 +18,10 @@
 #include <chrono>
 #include <stdexcept>
 
+// cosmos
+#include "Procedural_Generation.h"
+
+
 namespace lve {
 
     
@@ -145,6 +149,8 @@ namespace lve {
         floor.transform.scale = { 3.f, 1.f, 3.f };
         gameObjects.emplace(floor.getId(), std::move(floor));
 
+        My_ProcedurallyGenerateNewObject_2();
+
         std::vector<glm::vec3> lightColors{
         {1.f, .1f, .1f},
         {.1f, .1f, 1.f},
@@ -165,6 +171,43 @@ namespace lve {
             gameObjects.emplace(pointLight.getId(), std::move(pointLight));
         }
         
+    }
+
+  
+    void FirstApp::My_ProcedurallyGenerateNewObject_2()
+    {
+        //PrintMemoryUsage();
+        {
+
+            Proc::Procedural_Generation pc;
+            if (pc.data.size() > 0)
+            {
+
+                for (Proc::Procedural_ObjectData* data_obj : pc.data)
+                {
+                    Lve_model::Builder modelBuilder{};
+                    modelBuilder.vertices = std::vector<Lve_model::Vertex>(data_obj->vertices.size());
+
+                    modelBuilder.vertices = std::vector<Lve_model::Vertex>();
+                    for (const Proc::Vert& vert : data_obj->vertices)
+                    {
+                        modelBuilder.vertices.push_back({ { vert.position.x, vert.position.y, vert.position.z }, { vert.color.r, vert.color.g, vert.color.b }, {vert.normal.x, vert.normal.y, vert.normal.z} });
+                    }
+
+                    modelBuilder.indices = std::vector<uint32_t>(data_obj->indices);
+
+                    std::shared_ptr<Lve_model> lveModel = std::make_unique<Lve_model>(lveDevice, modelBuilder);
+                    auto proc_gm = LveGameObject::createGameObject();
+                    proc_gm.model = lveModel;
+                    proc_gm.transform.translation = data_obj->position;
+                    proc_gm.transform.scale = data_obj->scale;
+                    proc_gm.transform.rotation = data_obj->rotation;
+                    //gameObjects.push_back(std::move(proc_gm));
+                    gameObjects.emplace(proc_gm.getId(), std::move(proc_gm));
+                }
+            }
+        }
+
     }
 
 }  // namespace lve

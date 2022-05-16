@@ -5,12 +5,12 @@
 
 #include "glm/glm.hpp"
 
-//Yea
-
 namespace Proc::Opr
 {
+	
 	typedef Procedural_ObjectData* const  Data;
 
+	
 	void vertices_randomize_positions(Data data, const float rnd_ammout)
 	{
 		for (auto& v : data->vertices)
@@ -21,7 +21,9 @@ namespace Proc::Opr
 			v.position += glm::vec3{ x * rnd_ammout, y * rnd_ammout, z * rnd_ammout };
 		}
 	}
+	
 
+	
 	void add_quad(
 		Data data,
 		const glm::vec3& p0,
@@ -89,7 +91,9 @@ namespace Proc::Opr
 		//data->indices.pop_back(10);
 
 	}
+	
 
+	
 	void add_circular(Data data,
 		const int sections,
 		const float radius_max,
@@ -151,7 +155,7 @@ namespace Proc::Opr
 
 
 	}
-
+	
 
 }
 
