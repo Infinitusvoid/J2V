@@ -33,7 +33,7 @@ namespace lve {
 
 		// Cosmos
 		void My_ProcedurallyGenerateNewObject_2();
-		// Cosmos
+// Cosmos
 
 		// note: order of declarations matters
 		std::unique_ptr<LveDescriptorPool> globalPool{};

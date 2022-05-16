@@ -126,6 +126,22 @@ namespace lve {
         }
     }
 
+    void Lve_model::My_UnmapBuffers()
+    {
+        vertexBuffer->unmap();
+        if (hasIndexBuffer) {
+            indexBuffer->unmap();
+        }
+
+        /*
+        vertexBuffer->~LveBuffer();
+        if (hasIndexBuffer) {
+            indexBuffer->~LveBuffer();
+        }
+        */
+        //vkCmdremove
+    }
+
     std::vector<VkVertexInputBindingDescription> Lve_model::Vertex::getBindingDescriptions() {
         std::vector<VkVertexInputBindingDescription> bindingDescriptions(1);
         bindingDescriptions[0].binding = 0;

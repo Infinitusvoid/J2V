@@ -47,6 +47,7 @@ namespace lve {
             LveDevice& device, const std::string& filepath);
 
         void bind(VkCommandBuffer commandBuffer);
+        void My_UnmapBuffers();
         void draw(VkCommandBuffer commandBuffer);
 
     private:

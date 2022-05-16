@@ -79,6 +79,16 @@ namespace lve {
 
         for (auto& kv : frameInfo.gameObjects) {
             auto& obj = kv.second;
+            if (obj.cosmos_object_state != nullptr)
+            {
+                if (obj.cosmos_object_state->mark_as_invisible)
+                {
+                    obj.model->My_UnmapBuffers();
+                    obj.cosmos_object_state->ready_for_deletion = true;
+                    continue;
+                }
+            }
+
             if (obj.model == nullptr)
             {
                 continue;

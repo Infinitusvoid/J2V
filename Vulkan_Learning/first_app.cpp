@@ -84,6 +84,12 @@ namespace lve {
         while (!lveWindow.shouldClose()) {
             glfwPollEvents();
 
+            // Cosmos
+            if (glfwGetKey(lveWindow.getGLFWwindow(), GLFW_KEY_K) == GLFW_PRESS) { // I Need to remove this
+                My_ProcedurallyGenerateNewObject_2();
+            }
+            // Cosmos
+
             auto newTime = std::chrono::high_resolution_clock::now();
             float frameTime =
                 std::chrono::duration<float, std::chrono::seconds::period>(newTime - currentTime).count();

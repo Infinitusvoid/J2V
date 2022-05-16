@@ -76,7 +76,7 @@ namespace Proc
             float x = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
             float y = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
             float z = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-            pobj->position = glm::vec3(x * 0.1, y * 0.1, z * 100 * 0.001f);
+            pobj->position = glm::vec3(x * 0.1, y * 0.1, z * 100 * 1.0f);
         
         
 
