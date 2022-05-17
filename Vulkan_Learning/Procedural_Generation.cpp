@@ -1,6 +1,7 @@
 #include "Procedural_Generation.h"
 
 #include "Procedural_ObjectData_Operations.h"
+#include "Procedural_Ring.h"
 
 namespace Proc
 {

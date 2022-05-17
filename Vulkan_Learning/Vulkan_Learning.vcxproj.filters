@@ -137,6 +137,9 @@
     <ClInclude Include="Universe_Controller.h">
       <Filter>Source Files\Cosmos</Filter>
     </ClInclude>
+    <ClInclude Include="Procedural_Ring.h">
+      <Filter>Source Files\Cosmos</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaderess\compile.bat">

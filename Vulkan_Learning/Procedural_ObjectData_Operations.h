@@ -301,22 +301,16 @@ namespace Proc::Opr
 		}
 	};
 	*/
+	
+	void DrawRing_Quadr()
+	{
+
+	}
+
+	
+
 	void AddRing(Data data)
 	{
-		//
-		/*
-		RingShape rshape;
-		
-		auto lambda = [&](glm::vec3 v0, glm::vec3 v1, glm::vec3 v2, glm::vec3 v3, glm::vec3 color)
-		{
-			add_quad(data, v0, v1, v2, v3, color);
-		};
-		
-		rshape.calculate(lambda);
-		return;
-		*/
-		//
-
 		float thicknes_internal_mult = 0.8f;
 
 		const float length_multiplier = 5.0f;
@@ -331,13 +325,19 @@ namespace Proc::Opr
 		{
 			for (int r_index = 0; r_index < num_radial_slices; r_index++)
 			{
+				//TODO d1 should become d0 in next iteration of loop to avoid unecessery calulations
+
 				float d0 = l_index * length_slice;
+				//place to f(d0)
 				float d0_m = d0 * length_multiplier;
 				float d1 = (l_index + 1) * length_slice;
+				//place to f(d1)
 				float d1_m = d1 * length_multiplier;
 
 				float t0 = length_slice_radial * r_index;
+				//place for f(t0) [t0 should be from 0 to 1 in this step not 0 to 2PI]
 				float t1 = length_slice_radial * (r_index + 1);
+				//place for f(t1) [t0 should be from 0 to 1 in this step not 0 to 2PI]
 
 				float x0 = glm::sin(t0);
 				float y0 = glm::cos(t0);
@@ -345,35 +345,24 @@ namespace Proc::Opr
 				float x1 = glm::sin(t1);
 				float y1 = glm::cos(t1);
 
+				//External
 				{
-					// 1 1 0 0 no
-					// 0 0 1 1 no 
-					// 1 0 0 1 no
-					// 1 0 1 0 no almost bu n
-					// 0 1 0 1 no almost
-					// 0 1 1 0 no
-					// 0 0 0 0 nos
-
-
-					
-
 					const float offset_0_0 = Radius_External(r_index, l_index);
 					const float offset_0_1 = Radius_External(r_index, l_index + 1);
 					const float offset_1_0 = Radius_External(r_index + 1, l_index);
 					const float offset_1_1 = Radius_External(r_index + 1, l_index + 1);
 
-					float x0_d0 = x0 * offset_0_0;//Radius_External(r_index, l_index);
-					float x0_d1 = x0 * offset_0_1;//Radius_External(r_index, l_index + 1);
+					float x0_d0 = x0 * offset_0_0;
+					float x0_d1 = x0 * offset_0_1;
 
-					float y0_d0 = y0 * offset_0_0;//Radius_External(r_index, l_index);
-					float y0_d1 = y0 * offset_0_1;//Radius_External(r_index, l_index + 1);
+					float y0_d0 = y0 * offset_0_0;
+					float y0_d1 = y0 * offset_0_1;
 
-					float x1_d0 = x1 * offset_1_0;//Radius_External(r_index + 1, l_index);
-					float x1_d1 = x1 * offset_1_1;//Radius_External(r_index + 1, l_index + 1);
+					float x1_d0 = x1 * offset_1_0;
+					float x1_d1 = x1 * offset_1_1;
 
-					float y1_d0 = y1 * offset_1_0;//Radius_External(r_index + 1, l_index);
-					float y1_d1 = y1 * offset_1_1;// Radius_External(r_index + 1, l_index + 1);
-
+					float y1_d0 = y1 * offset_1_0;
+					float y1_d1 = y1 * offset_1_1;
 
 
 					glm::vec3 v0(x0_d0, y0_d0, d0_m);
@@ -381,16 +370,11 @@ namespace Proc::Opr
 					glm::vec3 v2(x1_d1, y1_d1, d1_m);
 					glm::vec3 v3(x1_d0, y1_d0, d0_m);
 
-					/*
-					glm::vec3 v0(x0, y0, d0_m);
-					glm::vec3 v1(x0, y0, d1_m);
-					glm::vec3 v2(x1, y1, d1_m);
-					glm::vec3 v3(x1, y1, d0_m);
-					*/
 					glm::vec3 color{ 0.5, 0.8, 0.6 };
 					add_quad(data, v0, v1, v2, v3, color);
 				}
 
+				//Internal 
 				{
 					
 
@@ -399,17 +383,17 @@ namespace Proc::Opr
 					const float offset_1_0 = Radius_Internal(r_index + 1, l_index);
 					const float offset_1_1 = Radius_Internal(r_index + 1, l_index + 1);
 
-					float x0_d0 = x0 * offset_0_0;//Radius_External(r_index, l_index);
-					float x0_d1 = x0 * offset_0_1;//Radius_External(r_index, l_index + 1);
+					float x0_d0 = x0 * offset_0_0;
+					float x0_d1 = x0 * offset_0_1;
 
-					float y0_d0 = y0 * offset_0_0;//Radius_External(r_index, l_index);
-					float y0_d1 = y0 * offset_0_1;//Radius_External(r_index, l_index + 1);
+					float y0_d0 = y0 * offset_0_0;
+					float y0_d1 = y0 * offset_0_1;
 
-					float x1_d0 = x1 * offset_1_0;//Radius_External(r_index + 1, l_index);
-					float x1_d1 = x1 * offset_1_1;//Radius_External(r_index + 1, l_index + 1);
+					float x1_d0 = x1 * offset_1_0;
+					float x1_d1 = x1 * offset_1_1;
 
-					float y1_d0 = y1 * offset_1_0;//Radius_External(r_index + 1, l_index);
-					float y1_d1 = y1 * offset_1_1;// Radius_External(r_index + 1, l_index + 1);
+					float y1_d0 = y1 * offset_1_0;
+					float y1_d1 = y1 * offset_1_1;
 
 
 					glm::vec3 v0(x0_d0, y0_d0, d0_m);
