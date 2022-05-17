@@ -76,7 +76,7 @@ namespace Proc
         float x = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
         float y = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
         float z = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        pobj->position = glm::vec3(x * 0.1, y * 0.1, 5.0f);//* 100 * 1.0f);
+        pobj->position = glm::vec3(0.0f, 0.0f, 0.0f); //glm::vec3(x * 0.1, y * 0.1, 5.0f);//* 100 * 1.0f);
         
         
 
@@ -116,6 +116,9 @@ namespace Proc
             glm::vec3(0.0, 1, 0.2));
         */
         Proc::Opr::AddRing(pobj);
+
+        //Proc::Opr::vertices_randomize_positions(pobj, 0.05f);
+
 
         data.push_back(pobj);
         

@@ -159,14 +159,69 @@ namespace Proc::Opr
 
 	void AddRing(Data data)
 	{
-		glm::vec3 v0(0, 0, 3);
-		glm::vec3 v1(0, 1, 3);
-		glm::vec3 v2(1, 1, 3);
-		glm::vec3 v3(1, 0, 3);
+		float thicknes_external_mult = 1.5f;
+		float thicknes_internal_mult = 0.8f;
 
-		glm::vec3 color{ 0.5, 0.8, 0.6 };
+		const float length_multiplier = 5.0f;
 
-		add_quad(data, v0, v1, v2, v3, color);
+		int num_radial_slices = 100;
+		int num_length_slices = 100;
+
+		float length_slice = 1.0f / (float)num_length_slices;
+		float length_slice_radial = glm::two_pi<float>() / (float)num_radial_slices;
+
+		for (int l_index = 0; l_index < num_length_slices; l_index++)
+		{
+			for (int r_index = 0; r_index < num_radial_slices; r_index++)
+			{
+				float d0 = l_index * length_slice;
+				float d0_m = d0 * length_multiplier;
+				float d1 = (l_index + 1) * length_slice;
+				float d1_m = d1 * length_multiplier;
+
+				float t0 = length_slice_radial * r_index;
+				float t1 = length_slice_radial * (r_index + 1);
+
+				{
+					float x0 = thicknes_external_mult * glm::sin(t0);
+					float y0 = thicknes_external_mult * glm::cos(t0);
+
+					float x1 = thicknes_external_mult * glm::sin(t1);
+					float y1 = thicknes_external_mult * glm::cos(t1);
+
+					glm::vec3 v0(x0, y0, d0_m);
+					glm::vec3 v1(x0, y0, d1_m);
+					glm::vec3 v2(x1, y1, d1_m);
+					glm::vec3 v3(x1, y1, d0_m);
+
+					glm::vec3 color{ 0.5, 0.8, 0.6 };
+					add_quad(data, v0, v1, v2, v3, color);
+				}
+
+				{
+					float x0 = thicknes_internal_mult * glm::sin(t0);
+					float y0 = thicknes_internal_mult * glm::cos(t0);
+
+					float x1 = thicknes_internal_mult * glm::sin(t1);
+					float y1 = thicknes_internal_mult * glm::cos(t1);
+
+					glm::vec3 v0(x0, y0, d0_m);
+					glm::vec3 v1(x0, y0, d1_m);
+					glm::vec3 v2(x1, y1, d1_m);
+					glm::vec3 v3(x1, y1, d0_m);
+
+					glm::vec3 color{ 0.5, 0.8, 0.6 };
+					add_quad(data, v0, v1, v2, v3, color);
+				}
+				
+
+				
+			}
+		}
+		
+		
+
+		
 	}
 
 }
