@@ -124,7 +124,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>C:\Users\CosmosXYZ\Documents\Visual Studio 2019\Libraries\tiny_obj_loader;C:\VulkanSDK\1.3.211.0\Include;C:\Users\CosmosXYZ\Documents\Visual Studio 2019\Libraries\glm;C:\Users\CosmosXYZ\Documents\Visual Studio 2019\Libraries\glfw-3.3.7.bin.WIN64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -142,7 +142,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>C:\Users\CosmosXYZ\Documents\Visual Studio 2019\Libraries\tiny_obj_loader;C:\VulkanSDK\1.3.211.0\Include;C:\Users\CosmosXYZ\Documents\Visual Studio 2019\Libraries\glm;C:\Users\CosmosXYZ\Documents\Visual Studio 2019\Libraries\glfw-3.3.7.bin.WIN64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
