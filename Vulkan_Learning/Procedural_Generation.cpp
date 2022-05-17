@@ -73,17 +73,17 @@ namespace Proc
         Procedural_ObjectData* pobj = new Procedural_ObjectData();
 
        
-            float x = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-            float y = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-            float z = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-            pobj->position = glm::vec3(x * 0.1, y * 0.1, z * 100 * 1.0f);
+        float x = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+        float y = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+        float z = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+        pobj->position = glm::vec3(x * 0.1, y * 0.1, 5.0f);//* 100 * 1.0f);
         
         
 
 
         //pobj.rotation = glm::vec3(0, 0, 0);
 
-        pobj->scale = glm::vec3(0.25, 0.25, 0.25);
+        pobj->scale = glm::vec3(1.0, 1.0, 1.0);
 
         /*
         Proc::Opr::add_quad(pobj,
@@ -104,7 +104,7 @@ namespace Proc
         );
         */
 
-        
+        /*
         Proc::Opr::add_circular(pobj,
             20,
             7.0f,
@@ -114,6 +114,8 @@ namespace Proc
             glm::vec3(0.5, 1, 0.5),
             glm::vec3(1.0, 1, 0.0),
             glm::vec3(0.0, 1, 0.2));
+        */
+        Proc::Opr::AddRing(pobj);
 
         data.push_back(pobj);
         

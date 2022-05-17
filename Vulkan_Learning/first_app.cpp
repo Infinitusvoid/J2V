@@ -85,7 +85,7 @@ namespace lve {
             glfwPollEvents();
 
             // Cosmos
-            if (glfwGetKey(lveWindow.getGLFWwindow(), GLFW_KEY_K) == GLFW_PRESS) { // I Need to remove this
+            if (glfwGetKey(lveWindow.getGLFWwindow(), GLFW_KEY_SPACE) == GLFW_PRESS) { //GLFW_KEY_K) == GLFW_PRESS) { // I Need to remove this
                 My_ProcedurallyGenerateNewObject_2();
             }
             // Cosmos

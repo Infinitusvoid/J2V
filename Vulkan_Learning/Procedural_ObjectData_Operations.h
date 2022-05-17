@@ -157,6 +157,18 @@ namespace Proc::Opr
 	}
 	
 
+	void AddRing(Data data)
+	{
+		glm::vec3 v0(0, 0, 3);
+		glm::vec3 v1(0, 1, 3);
+		glm::vec3 v2(1, 1, 3);
+		glm::vec3 v3(1, 0, 3);
+
+		glm::vec3 color{ 0.5, 0.8, 0.6 };
+
+		add_quad(data, v0, v1, v2, v3, color);
+	}
+
 }
 
 
