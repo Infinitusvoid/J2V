@@ -107,16 +107,8 @@ struct Procedural_Ring
 				float d0 = f_disp_l(l_index * length_slice);
 				float d1 = f_disp_l((l_index + 1) * length_slice);
 
-				//t0
-				float t0 = length_slice_radial * r_index;
-				t0 = f_disp_r(t0);
-				t0 *= glm::two_pi<float>();
-
-				//t1
-				float t1 = length_slice_radial * (r_index + 1);
-				t1 = f_disp_r(t1);
-				t1 *= glm::two_pi<float>();
-				
+				float t0 = glm::two_pi<float>() * f_disp_r(length_slice_radial * r_index      );
+				float t1 = glm::two_pi<float>() * f_disp_r(length_slice_radial * (r_index + 1));
 
 				float x0 = glm::sin(t0);
 				float y0 = glm::cos(t0);
