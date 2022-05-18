@@ -1,6 +1,7 @@
 #pragma once
 
 #include <functional>
+#include <iostream>
 
 struct Procedural_Ring
 {
@@ -76,18 +77,19 @@ struct Procedural_Ring
 
 
 		void draw(
-			int r_index,
-			int l_index,
-			int x0,
-			int y0,
-			int x1,
-			int y1,
-			float d0,
-			float d1,
+			const int r_index,
+			const int l_index,
+			const float x0,
+			const float y0,
+			const float x1,
+			const float y1,
+			const float d0,
+			const float d1,
 			std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad,
 			std::function<float(int, int)> f_radius
 			)
 		{
+			
 			const float offset_0_0 = f_radius(r_index, l_index);//Radius_External(r_index, l_index);
 			const float offset_0_1 = f_radius(r_index, l_index + 1);
 			const float offset_1_0 = f_radius(r_index + 1, l_index);
@@ -104,7 +106,6 @@ struct Procedural_Ring
 
 			float y1_d0 = y1 * offset_1_0;
 			float y1_d1 = y1 * offset_1_1;
-
 
 			glm::vec3 v0(x0_d0, y0_d0, d0);
 			glm::vec3 v1(x0_d1, y0_d1, d1);
@@ -127,44 +128,51 @@ struct Procedural_Ring
 			for (int r_index = 0; r_index < num_radial_slices; r_index++)
 			{
 				//TODO d1 should become d0 in next iteration of loop to avoid unecessery calulations
-
+				//std::cout << "-----" << std::endl;
 				float d0 = f_disp_l(l_index * length_slice);
 				float d1 = f_disp_l((l_index + 1) * length_slice);
 
-				const float t0 = glm::two_pi<float>() * f_disp_r(length_slice_radial * r_index);
-				const float t1 = glm::two_pi<float>() * f_disp_r(length_slice_radial * (r_index + 1));
+				float t0 = glm::two_pi<float>() * f_disp_r(length_slice_radial * r_index);
+				float t1 = glm::two_pi<float>() * f_disp_r(length_slice_radial * (r_index + 1));
 
-				const float x0 = glm::sin(t0);
-				const float y0 = glm::cos(t0);
+				float x0 = glm::sin(t0);
+				float y0 = glm::cos(t0);
 
-				const float x1 = glm::sin(t1);
-				const float y1 = glm::cos(t1);
+				float x1 = glm::sin(t1);
+				float y1 = glm::cos(t1);
 
 				f_update(l_index, r_index); //TODO udate to calculate above staff
 
-				// External ring
-				{
-					draw(r_index, l_index, x0, y0, x1, y1, d0, d1, f_addQuad, f_radius_External);
-				}
-				
 
+				//std::cout << "pre1 A x1 : " << x1 << std::endl;
+				//std::cout << "pre1 A y1 : " << y1 << std::endl;
+
+				// External ring
+				//{
+					//std::cout << "pre2 A x1 : " << x1 << std::endl;
+					//std::cout << "pre2 A y1 : " << y1 << std::endl;
+					draw(r_index, l_index, x0, y0, x1, y1, d0, d1, f_addQuad, f_radius_External);
+					draw(r_index, l_index, x0, y0, x1, y1, d0, d1, f_addQuad, f_radius_Internal);
+				//}
+				
+				/*
 				{
 					const float offset_0_0 = f_radius_External(r_index, l_index);//Radius_External(r_index, l_index);
 					const float offset_0_1 = f_radius_External(r_index, l_index + 1);
 					const float offset_1_0 = f_radius_External(r_index + 1, l_index);
 					const float offset_1_1 = f_radius_External(r_index + 1, l_index + 1);
 
-					float x0_d0 = x0 * offset_0_0;
-					float x0_d1 = x0 * offset_0_1;
+					const float x0_d0 = x0 * offset_0_0;
+					const float x0_d1 = x0 * offset_0_1;
 
-					float y0_d0 = y0 * offset_0_0;
-					float y0_d1 = y0 * offset_0_1;
+					const float y0_d0 = y0 * offset_0_0;
+					const float y0_d1 = y0 * offset_0_1;
 
-					float x1_d0 = x1 * offset_1_0;
-					float x1_d1 = x1 * offset_1_1;
+					const float x1_d0 = x1 * offset_1_0;
+					const float x1_d1 = x1 * offset_1_1;
 
-					float y1_d0 = y1 * offset_1_0;
-					float y1_d1 = y1 * offset_1_1;
+					const float y1_d0 = y1 * offset_1_0;
+					const float y1_d1 = y1 * offset_1_1;
 
 
 					glm::vec3 v0(x0_d0, y0_d0, d0);
@@ -172,12 +180,20 @@ struct Procedural_Ring
 					glm::vec3 v2(x1_d1, y1_d1, d1);
 					glm::vec3 v3(x1_d0, y1_d0, d0);
 
+					
 					f_addQuad(v0, v1, v2, v3);
+
+					//std::cout << "B x1 : " << x1 << std::endl;
+					//std::cout << "B y1 : " << y1 << std::endl;
+
+					//std::cout << "B v2 : " << v2.x << std::endl;
+					//std::cout << "B v2 : " << v2.y << std::endl;
 				}
-				
+				*/
 				
 				
 				// Internal ring
+				/*
 				{
 					const float offset_0_0 = f_radius_Internal(r_index, l_index);
 					const float offset_0_1 = f_radius_Internal(r_index, l_index + 1);
@@ -204,7 +220,7 @@ struct Procedural_Ring
 
 					
 				}
-
+				*/
 
 
 			}
