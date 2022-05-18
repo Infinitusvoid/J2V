@@ -4,7 +4,6 @@
 
 struct Procedural_Ring
 {
-	public:
 		int num_radial_slices;
 		int num_length_slices;
 		std::function<void()> f_init;
@@ -13,11 +12,7 @@ struct Procedural_Ring
 		std::function<float(int, int)> f_radius_Internal;
 		std::function<float(float)> f_disp_l = Procedural_Ring::identitiy;
 		std::function<float(float)> f_disp_r = Procedural_Ring::identitiy;
-	private:
-		float length_slice;
-		float length_slice_radial;
 
-	public:
 		static float radius_External_Example(int r, int l)
 	{
 		float r_angle = (r / (float)500) * glm::two_pi<float>();
@@ -66,8 +61,7 @@ struct Procedural_Ring
 	{
 		return v;
 	}
-	
-	
+		
 		void init_example_0()
 		{
 			num_radial_slices = 500;
@@ -80,22 +74,52 @@ struct Procedural_Ring
 			f_disp_r = Procedural_Ring::identitiy;
 		}
 
-		void m_init()
-		{
-			length_slice = 1.0f / (float)num_length_slices;
-			length_slice_radial = 1.0f / (float)num_radial_slices;
-		}
 
-		void m_loop_calc()
+		void draw(
+			const int r_index,
+			const int l_index,
+			const int x0,
+			const int y0,
+			const int x1,
+			const int y1,
+			const float d0,
+			const float d1,
+			std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad,
+			std::function<float(int, int)> f_radius
+			)
 		{
+			const float offset_0_0 = f_radius(r_index, l_index);//Radius_External(r_index, l_index);
+			const float offset_0_1 = f_radius(r_index, l_index + 1);
+			const float offset_1_0 = f_radius(r_index + 1, l_index);
+			const float offset_1_1 = f_radius(r_index + 1, l_index + 1);
 
+			float x0_d0 = x0 * offset_0_0;
+			float x0_d1 = x0 * offset_0_1;
+
+			float y0_d0 = y0 * offset_0_0;
+			float y0_d1 = y0 * offset_0_1;
+
+			float x1_d0 = x1 * offset_1_0;
+			float x1_d1 = x1 * offset_1_1;
+
+			float y1_d0 = y1 * offset_1_0;
+			float y1_d1 = y1 * offset_1_1;
+
+
+			glm::vec3 v0(x0_d0, y0_d0, d0);
+			glm::vec3 v1(x0_d1, y0_d1, d1);
+			glm::vec3 v2(x1_d1, y1_d1, d1);
+			glm::vec3 v3(x1_d0, y1_d0, d0);
+
+			f_addQuad(v0, v1, v2, v3);
 		}
 
 		void build (
-			std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad
+			const std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad
 		)
 		{
-			m_init();
+			float length_slice = 1.0f / (float)num_length_slices;
+			float length_slice_radial = 1.0f / (float)num_radial_slices;
 			f_init(); //TODO use init to calculate staff 
 
 		for (int l_index = 0; l_index < num_length_slices; l_index++)
@@ -107,19 +131,23 @@ struct Procedural_Ring
 				float d0 = f_disp_l(l_index * length_slice);
 				float d1 = f_disp_l((l_index + 1) * length_slice);
 
-				float t0 = glm::two_pi<float>() * f_disp_r(length_slice_radial * r_index      );
-				float t1 = glm::two_pi<float>() * f_disp_r(length_slice_radial * (r_index + 1));
+				const float t0 = glm::two_pi<float>() * f_disp_r(length_slice_radial * r_index);
+				const float t1 = glm::two_pi<float>() * f_disp_r(length_slice_radial * (r_index + 1));
 
-				float x0 = glm::sin(t0);
-				float y0 = glm::cos(t0);
+				const float x0 = glm::sin(t0);
+				const float y0 = glm::cos(t0);
 
-				float x1 = glm::sin(t1);
-				float y1 = glm::cos(t1);
+				const float x1 = glm::sin(t1);
+				const float y1 = glm::cos(t1);
 
 				f_update(l_index, r_index); //TODO udate to calculate above staff
 
+				// External ring
+				{
+					draw(r_index, l_index, x0, y0, x1, y1, d0, d1, f_addQuad, f_radius_External);
+				}
 				
-				//External
+
 				{
 					const float offset_0_0 = f_radius_External(r_index, l_index);//Radius_External(r_index, l_index);
 					const float offset_0_1 = f_radius_External(r_index, l_index + 1);
@@ -146,8 +174,10 @@ struct Procedural_Ring
 
 					f_addQuad(v0, v1, v2, v3);
 				}
-
-				//Internal 
+				
+				
+				
+				// Internal ring
 				{
 					const float offset_0_0 = f_radius_Internal(r_index, l_index);
 					const float offset_0_1 = f_radius_Internal(r_index, l_index + 1);
