@@ -76,14 +76,14 @@ struct Procedural_Ring
 
 
 		void draw(
-			const int r_index,
-			const int l_index,
-			const int x0,
-			const int y0,
-			const int x1,
-			const int y1,
-			const float d0,
-			const float d1,
+			int r_index,
+			int l_index,
+			int x0,
+			int y0,
+			int x1,
+			int y1,
+			float d0,
+			float d1,
 			std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad,
 			std::function<float(int, int)> f_radius
 			)
