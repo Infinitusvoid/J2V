@@ -7,6 +7,8 @@
 
 #include "glm/glm.hpp"
 
+#include "Procedural_Ring.h"
+
 namespace Proc::Opr
 {
 	
@@ -308,9 +310,19 @@ namespace Proc::Opr
 	}
 
 	
-
 	void AddRing(Data data)
 	{
+		auto lambda = [&data](glm::vec3& v0, glm::vec3& v1, glm::vec3& v2, glm::vec3& v3) {
+			glm::vec3 color{ 0.5, 0.8, 0.6 };
+			add_quad(data,v0, v1, v2, v3, color);
+		};
+
+		Procedural_Ring r;
+		r.init_example_0();
+		r.build(lambda);
+
+		return;
+
 		float thicknes_internal_mult = 0.8f;
 
 		const float length_multiplier = 5.0f;
