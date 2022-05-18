@@ -317,7 +317,7 @@ namespace Proc::Opr
 			add_quad(data,v0, v1, v2, v3, color);
 		};
 
-		Procedural_Ring r;
+		Cosmos::Procedural_Ring r;
 		r.init_example_0();
 		r.build(lambda);
 
