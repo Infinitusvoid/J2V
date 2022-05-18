@@ -1,13 +1,14 @@
 #pragma once
 
 #include "Procedural_Generation.h";
+#include "Procedural_Ring.h"
+
+// libs
 #include <vector>
 #include <math.h>
 #include <functional>
-
 #include "glm/glm.hpp"
 
-#include "Procedural_Ring.h"
 
 namespace Proc::Opr
 {
@@ -205,111 +206,6 @@ namespace Proc::Opr
 		return val;
 	}
 
-	
-
-	/*
-	struct RingShape
-	{
-		int num_radial_slices = 500;
-		int num_length_slices = 500;
-		
-		float length_multiplier = 5.0f;
-
-		float f_radial_displacement(float r)
-		{
-			return r;
-		}
-
-		float f_length_displacement(float l)
-		{
-			return l;
-		}
-
-		float radius_f(int r, int l)
-		{
-			float r_angle = (r / (float)num_radial_slices) * glm::two_pi<float>();
-			float l_fak = (l / (float)num_length_slices);
-
-			float this_offst = 1.5f + 0.25 * glm::sin(r_angle * 10);
-			this_offst += 0.1 * glm::sin(l_fak * glm::two_pi<float>() * 20.0f);
-
-
-			//return std::lerp(Radius_Internal(r, l), this_offst, 1 - (abs(l_fak - 0.5f) * 2));
-			//return this_offst;
-			//return std::lerp(0.5f, this_offst, l_fak);
-			return  1.0;// + l_fak;//l_fak * 2.5f;
-		}
-
-		void calculate(std::function<void(glm::vec3, glm::vec3, glm::vec3, glm::vec3, glm::vec3)> f)
-		{
-			//pre loop
-			float length_slice = 1.0f / (float)num_length_slices;
-			float length_slice_radial =  1.0f / (float)num_radial_slices;
-			
-
-			for (int l_index = 0; l_index < num_length_slices; l_index++)
-			{
-				for (int r_index = 0; r_index < num_radial_slices; r_index++)
-				{
-					length_slice_radial = f_radial_displacement(length_slice_radial);
-					length_slice_radial *= glm::two_pi<float>();
-					
-					float d0 = l_index * length_slice;
-					float d0_m = d0 * length_multiplier;
-					float d1 = (l_index + 1) * length_slice;
-					float d1_m = d1 * length_multiplier;
-
-					float t0 = length_slice_radial * r_index;
-					float t1 = length_slice_radial * (r_index + 1);
-
-					float x0 = glm::sin(t0);
-					float y0 = glm::cos(t0);
-
-					float x1 = glm::sin(t1);
-					float y1 = glm::cos(t1);
-
-
-					//ring
-					const float offset_0_0 = radius_f(r_index, l_index);
-					const float offset_0_1 = radius_f(r_index, l_index + 1);
-					const float offset_1_0 = radius_f(r_index + 1, l_index);
-					const float offset_1_1 = radius_f(r_index + 1, l_index + 1);
-
-					float x0_d0 = x0 * offset_0_0;//Radius_External(r_index, l_index);
-					float x0_d1 = x0 * offset_0_1;//Radius_External(r_index, l_index + 1);
-
-					float y0_d0 = y0 * offset_0_0;//Radius_External(r_index, l_index);
-					float y0_d1 = y0 * offset_0_1;//Radius_External(r_index, l_index + 1);
-
-					float x1_d0 = x1 * offset_1_0;//Radius_External(r_index + 1, l_index);
-					float x1_d1 = x1 * offset_1_1;//Radius_External(r_index + 1, l_index + 1);
-
-					float y1_d0 = y1 * offset_1_0;//Radius_External(r_index + 1, l_index);
-					float y1_d1 = y1 * offset_1_1;// Radius_External(r_index + 1, l_index + 1);
-
-
-
-					glm::vec3 v0(x0_d0, y0_d0, d0_m);
-					glm::vec3 v1(x0_d1, y0_d1, d1_m);
-					glm::vec3 v2(x1_d1, y1_d1, d1_m);
-					glm::vec3 v3(x1_d0, y1_d0, d0_m);
-
-					
-					glm::vec3 color{ 0.5, 0.8, 0.6 };
-					//add_quad(data, v0, v1, v2, v3, color);
-					f(v0, v1, v2, v3, color);
-				}
-			}
-		}
-	};
-	*/
-	
-	void DrawRing_Quadr()
-	{
-
-	}
-
-	
 	void AddRing(Data data)
 	{
 		auto lambda = [&data](glm::vec3& v0, glm::vec3& v1, glm::vec3& v2, glm::vec3& v3) {
@@ -320,111 +216,6 @@ namespace Proc::Opr
 		Cosmos::Procedural_Ring r;
 		r.init_example_0();
 		r.build(lambda);
-
-		return;
-
-		float thicknes_internal_mult = 0.8f;
-
-		const float length_multiplier = 5.0f;
-
-		int num_radial_slices = 500;
-		int num_length_slices = 500;
-
-		float length_slice = 1.0f / (float)num_length_slices;
-		float length_slice_radial = glm::two_pi<float>() / (float)num_radial_slices;
-
-		for (int l_index = 0; l_index < num_length_slices; l_index++)
-		{
-			for (int r_index = 0; r_index < num_radial_slices; r_index++)
-			{
-				//TODO d1 should become d0 in next iteration of loop to avoid unecessery calulations
-
-				float d0 = l_index * length_slice;
-				//place to f(d0)
-				float d0_m = d0 * length_multiplier;
-				float d1 = (l_index + 1) * length_slice;
-				//place to f(d1)
-				float d1_m = d1 * length_multiplier;
-
-				float t0 = length_slice_radial * r_index;
-				//place for f(t0) [t0 should be from 0 to 1 in this step not 0 to 2PI]
-				float t1 = length_slice_radial * (r_index + 1);
-				//place for f(t1) [t0 should be from 0 to 1 in this step not 0 to 2PI]
-
-				float x0 = glm::sin(t0);
-				float y0 = glm::cos(t0);
-
-				float x1 = glm::sin(t1);
-				float y1 = glm::cos(t1);
-
-				//External
-				{
-					const float offset_0_0 = Radius_External(r_index, l_index);
-					const float offset_0_1 = Radius_External(r_index, l_index + 1);
-					const float offset_1_0 = Radius_External(r_index + 1, l_index);
-					const float offset_1_1 = Radius_External(r_index + 1, l_index + 1);
-
-					float x0_d0 = x0 * offset_0_0;
-					float x0_d1 = x0 * offset_0_1;
-
-					float y0_d0 = y0 * offset_0_0;
-					float y0_d1 = y0 * offset_0_1;
-
-					float x1_d0 = x1 * offset_1_0;
-					float x1_d1 = x1 * offset_1_1;
-
-					float y1_d0 = y1 * offset_1_0;
-					float y1_d1 = y1 * offset_1_1;
-
-
-					glm::vec3 v0(x0_d0, y0_d0, d0_m);
-					glm::vec3 v1(x0_d1, y0_d1, d1_m);
-					glm::vec3 v2(x1_d1, y1_d1, d1_m);
-					glm::vec3 v3(x1_d0, y1_d0, d0_m);
-
-					glm::vec3 color{ 0.5, 0.8, 0.6 };
-					add_quad(data, v0, v1, v2, v3, color);
-				}
-
-				//Internal 
-				{
-					
-
-					const float offset_0_0 = Radius_Internal(r_index, l_index);
-					const float offset_0_1 = Radius_Internal(r_index, l_index + 1);
-					const float offset_1_0 = Radius_Internal(r_index + 1, l_index);
-					const float offset_1_1 = Radius_Internal(r_index + 1, l_index + 1);
-
-					float x0_d0 = x0 * offset_0_0;
-					float x0_d1 = x0 * offset_0_1;
-
-					float y0_d0 = y0 * offset_0_0;
-					float y0_d1 = y0 * offset_0_1;
-
-					float x1_d0 = x1 * offset_1_0;
-					float x1_d1 = x1 * offset_1_1;
-
-					float y1_d0 = y1 * offset_1_0;
-					float y1_d1 = y1 * offset_1_1;
-
-
-					glm::vec3 v0(x0_d0, y0_d0, d0_m);
-					glm::vec3 v1(x0_d1, y0_d1, d1_m);
-					glm::vec3 v2(x1_d1, y1_d1, d1_m);
-					glm::vec3 v3(x1_d0, y1_d0, d0_m);
-
-					glm::vec3 color{ 0.5, 0.8, 0.6 };
-					add_quad(data, v0, v1, v2, v3, color);
-				}
-				
-
-				
-			}
-		}
-		
-		
-
-		
 	}
 
 }

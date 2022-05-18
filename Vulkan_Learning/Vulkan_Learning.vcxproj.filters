@@ -78,6 +78,9 @@
     <ClCompile Include="Universe_Controller.cpp">
       <Filter>Source Files\Cosmos</Filter>
     </ClCompile>
+    <ClCompile Include="Procedural_Ring.cpp">
+      <Filter>Source Files\Cosmos\Ring</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lve_window.h">

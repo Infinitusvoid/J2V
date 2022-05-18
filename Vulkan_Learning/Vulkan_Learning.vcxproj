@@ -171,6 +171,7 @@
     <ClCompile Include="point_light_system.cpp" />
     <ClCompile Include="Procedural_Generation.cpp" />
     <ClCompile Include="simple_render_system.cpp" />
+    <ClCompile Include="Procedural_Ring.cpp" />
     <ClCompile Include="Universe_Controller.cpp" />
   </ItemGroup>
   <ItemGroup>

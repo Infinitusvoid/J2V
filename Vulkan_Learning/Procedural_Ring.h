@@ -2,6 +2,11 @@
 
 #include <functional>
 #include <iostream>
+//#include <glm/glm.hpp>
+#include <glm/glm.hpp>
+
+//here is PI and you should have this in .cpp file.
+#include <glm/gtc/constants.hpp>
 
 namespace Cosmos
 {
@@ -30,6 +35,12 @@ namespace Cosmos
 			f_radius_Internal = Procedural_Ring::m_example_0_internal;
 			f_disp_l = [](float l) { return l * 5.0f; };
 			f_disp_r = Procedural_Ring::identitiy;
+		}
+
+		void neki()
+		{
+			glm::sin(0.5f);
+			glm::two_pi<float>();
 		}
 
 		void build(
