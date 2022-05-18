@@ -22,6 +22,9 @@
     <Filter Include="Source Files\Cosmos">
       <UniqueIdentifier>{052e471f-1766-40bc-98e8-85c70327ba09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Cosmos\Ring">
+      <UniqueIdentifier>{8896e986-8535-4f23-b9a0-8bf3d5149bcd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lve_window.cpp">
@@ -138,7 +141,7 @@
       <Filter>Source Files\Cosmos</Filter>
     </ClInclude>
     <ClInclude Include="Procedural_Ring.h">
-      <Filter>Source Files\Cosmos</Filter>
+      <Filter>Source Files\Cosmos\Ring</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

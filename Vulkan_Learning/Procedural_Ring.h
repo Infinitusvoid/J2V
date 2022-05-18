@@ -3,6 +3,10 @@
 #include <functional>
 #include <iostream>
 
+namespace Cosmos
+{
+
+}
 struct Procedural_Ring
 {
 	int num_radial_slices;
@@ -13,6 +17,8 @@ struct Procedural_Ring
 	std::function<float(int, int)> f_radius_Internal;
 	std::function<float(float)> f_disp_l = Procedural_Ring::identitiy;
 	std::function<float(float)> f_disp_r = Procedural_Ring::identitiy;
+	std::function<void()> f_active_external = [](){};
+	std::function<void()> f_active_iternal  = [](){};
 
 	static float const identitiy(const float v) { return v; }
 
@@ -56,7 +62,9 @@ struct Procedural_Ring
 
 				f_update(l_index, r_index); //TODO udate to calculate above staff
 
+				f_active_external();
 				m_draw(r_index, l_index, x0, y0, x1, y1, d0, d1, f_addQuad, f_radius_External);
+				f_active_iternal();
 				m_draw(r_index, l_index, x0, y0, x1, y1, d0, d1, f_addQuad, f_radius_Internal);
 			}
 		}
@@ -134,82 +142,4 @@ struct Procedural_Ring
 			float val = std::lerp(0.5f, this_offst, lerp_fak);
 			return std::min(m_example_0_external(r, l), val);
 		}
-
-
-
-
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-	/*
-	struct Procedural_Ring_Info
-	{
-		int num_radial_slices;
-		int num_length_slices;
-		std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad;
-		std::function<void()> f_init;
-		std::function<void(int, int)> f_update;
-		std::function<float(int, int)> f_radius_External;
-		std::function<float(int, int)> f_radius_Internal;
-		std::function<float(float)> f_disp_l = Procedural_Ring::identitiy;
-		std::function<float(float)> f_disp_r = Procedural_Ring::identitiy;
-
-		static Procedural_Ring_Info Example(std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad)
-		{
-			Procedural_Ring_Info info{};
-			info.num_length_slices = 500;
-			info.num_radial_slices = 500;
-			info.f_addQuad = f_addQuad;
-			info.f_init = []() {};
-			info.f_update = [](int l, int r) {};
-			info.f_radius_External = radius_External_Example;
-			info.f_radius_Internal = radius_Internal_Example;
-			info.f_disp_l = Procedural_Ring::identitiy;
-			info.f_disp_r = Procedural_Ring::identitiy;
-			return info;
-		}
-	};
-	*/
-	/*
-	static void Example()
-	{
-		Procedural_Ring r = Procedural_Ring(
-			500,
-			500,
-			nullptr,
-			[]() {},
-			[](int l, int r) {},
-			Procedural_Ring::radius_External_Example,
-			Procedural_Ring::radius_Internal_Example,
-			,
-			[](float r) { return r; }
-		);
-	}
-	*/
