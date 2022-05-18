@@ -104,17 +104,6 @@ struct Procedural_Ring
 			{
 				//TODO d1 should become d0 in next iteration of loop to avoid unecessery calulations
 
-				//d0
-				//float d0 = l_index * length_slice;
-				//d0 = f_disp_l(d0);
-				//float d0_m = d0;
-				
-				
-				//d1
-				//float d1 = (l_index + 1) * length_slice;
-				//d1 = f_disp_l(d1);
-				//float d1_m = d1;
-				
 				float d0 = f_disp_l(l_index * length_slice);
 				float d1 = f_disp_l((l_index + 1) * length_slice);
 
