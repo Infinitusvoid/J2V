@@ -3,7 +3,7 @@
 namespace Cosmos
 {
 	
-	void Procedural_Ring::build(const std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad)
+	void Procedural_Ring::build(const std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad)
 	{
 		float length_slice = 1.0f / (float)num_length_slices;
 		float length_slice_radial = 1.0f / (float)num_radial_slices;
@@ -27,10 +27,14 @@ namespace Cosmos
 				float x1 = glm::sin(t1);
 				float y1 = glm::cos(t1);
 
-				f_update(l_index, r_index); //TODO udate to calculate above staff
+				//f_update(r_index, l_index); //TODO udate to calculate above staff
 
 				f_active_external();
 				m_draw(r_index, l_index, x0, y0, x1, y1, d0, d1, f_addQuad, f_radius_External);
+
+
+				//f_update(r_index, l_index);
+
 				f_active_iternal();
 				m_draw(r_index, l_index, x0, y0, x1, y1, d0, d1, f_addQuad, f_radius_Internal);
 			}
@@ -48,7 +52,7 @@ namespace Cosmos
 		const float y1,
 		const float d0,
 		const float d1,
-		std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad,
+		std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad,
 		std::function<float(int, int)> f_radius
 	)
 	{
@@ -74,8 +78,9 @@ namespace Cosmos
 		glm::vec3 v1(x0_d1, y0_d1, d1);
 		glm::vec3 v2(x1_d1, y1_d1, d1);
 		glm::vec3 v3(x1_d0, y1_d0, d0);
+		glm::vec3 color(0.2f, 0.8f, 0.3f);
 
-		f_addQuad(v0, v1, v2, v3);
+		f_addQuad(v0, v1, v2, v3, color);
 	}
 
 }

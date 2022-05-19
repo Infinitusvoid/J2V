@@ -23,14 +23,14 @@ namespace Cosmos
 		std::function<void()> f_active_external = []() {};
 		std::function<void()> f_active_iternal = []() {};
 
-		
-		void build( const std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad );
-		
+
+		void build(const std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad);
+
 		static float const identitiy(const float v) { return v; }
-		
+
 	private:
 
-		static void m_draw(
+		void m_draw(
 			const int r_index,
 			const int l_index,
 			const float x0,
@@ -39,9 +39,8 @@ namespace Cosmos
 			const float y1,
 			const float d0,
 			const float d1,
-			std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad,
-			std::function<float(int, int)> f_radius
-		);
-		
+			std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad,
+			std::function<float(int, int)> f_radius);
 	};
+	
 }
