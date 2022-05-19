@@ -2,6 +2,7 @@
 
 namespace Cosmos
 {
+	
 	void Procedural_Ring::init_example_0()
 	{
 		num_radial_slices = 500;
@@ -13,6 +14,7 @@ namespace Cosmos
 		f_disp_l = [](float l) { return l * 5.0f; };
 		f_disp_r = Procedural_Ring::identitiy;
 	}
+	
 
 	void Procedural_Ring::build(const std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad)
 	{
@@ -88,7 +90,7 @@ namespace Cosmos
 
 		f_addQuad(v0, v1, v2, v3);
 	}
-
+	
 	float Procedural_Ring::m_example_0_external(int r, int l)
 	{
 		float r_angle = (r / (float)500) * glm::two_pi<float>();
@@ -104,7 +106,8 @@ namespace Cosmos
 
 		return std::lerp(0.5f, this_offst, lerp_fak);
 	}
-
+	
+	
 	float Procedural_Ring::m_example_0_internal(int r, int l)
 	{
 		float r_angle = (r / (float)500) * glm::two_pi<float>();
@@ -120,7 +123,7 @@ namespace Cosmos
 		float val = std::lerp(0.5f, this_offst, lerp_fak);
 		return std::min(m_example_0_external(r, l), val);
 	}
-
+	
 
 }
 

@@ -169,11 +169,13 @@ namespace Proc::Opr
 
 		Cosmos::Ring_Example_000 ring_000;
 		ring_000.init();
-		ring_000.build(lambda);
+		//ring_000.build(lambda);
 
+		
 		Cosmos::Procedural_Ring r;
 		r.init_example_0();
 		r.build(lambda);
+		
 
 
 	}

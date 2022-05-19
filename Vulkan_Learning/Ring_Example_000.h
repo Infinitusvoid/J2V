@@ -5,6 +5,7 @@
 // std
 #include <iostream>
 #include <functional>
+#include "Procedural_Ring.h"
 
 // libs
 #include <glm/glm.hpp>
@@ -21,7 +22,11 @@ namespace Cosmos
 	public:
 		void init();
 		void build(const std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad);
+	private:
+		Procedural_Ring proc_ring;
 
+		static float m_example_0_external(int r, int l);
+		static float m_example_0_internal(int r, int l);
 	};
 
 }
