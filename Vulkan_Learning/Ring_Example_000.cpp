@@ -36,7 +36,7 @@ namespace Cosmos
 		return std::min(m_example_0_external(r, l), val);
 	}
 	*/
-
+	
 	void Ring_Example_000::build(const std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad)
 	{
 		//initializatin
@@ -49,7 +49,7 @@ namespace Cosmos
 		
 		proc_ring.f_radius_External = [&](int r, int l) {
 			
-			float r_angle = (r / (float)proc_ring.num_radial_slices) * glm::two_pi<float>();
+			float r_angle =  (r / (float)proc_ring.num_radial_slices) * glm::two_pi<float>();
 			float l_fak = (l / (float)proc_ring.num_length_slices);
 
 			
@@ -67,8 +67,8 @@ namespace Cosmos
 
 		proc_ring.f_radius_Internal = [&](int r, int l)
 		{
-			float r_angle = (r / (float)proc_ring.num_radial_slices) * glm::two_pi<float>();
-			float l_fak = (l / (float)proc_ring.num_length_slices);
+			float r_angle =  (r / (float)proc_ring.num_radial_slices) * glm::two_pi<float>();
+			float l_fak =  (l / (float)proc_ring.num_length_slices);
 
 			float this_offst = 0.7f +
 				0.025 * glm::sin(r_angle * 25) +

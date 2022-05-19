@@ -22,10 +22,14 @@ namespace Cosmos
 		std::function<float(float)> f_disp_r = Procedural_Ring::identitiy;
 		std::function<void()> f_active_external = []() {};
 		std::function<void()> f_active_iternal = []() {};
-
+		std::function<glm::vec3(int, int)> f_color = [](int r, int l) {
+			return glm::vec3(
+				(1.0f / 500.0f)*(float)r,
+				(1.0f / 500.0f) * (float)l, 1.0f); };
+		
 
 		void build(const std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad);
-
+		
 		static float const identitiy(const float v) { return v; }
 
 	private:
