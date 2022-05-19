@@ -2,6 +2,7 @@
 
 #include "Procedural_Generation.h";
 #include "Procedural_Ring.h"
+#include "Ring_Example_000.h"
 
 // libs
 #include <vector>
@@ -161,7 +162,7 @@ namespace Proc::Opr
 
 	}
 	
-
+	/*
 	float Radius_External(int r, int l)
 	{
 		float r_angle = (r / (float)500) * glm::two_pi<float>();
@@ -182,7 +183,8 @@ namespace Proc::Opr
 		//return std::lerp(0.5f, this_offst, l_fak);
 		return  1.0 + l_fak;//l_fak * 2.5f;
 	}
-
+	*/
+	/*
 	float Radius_Internal(int r, int l)
 	{
 		float r_angle = (r / (float)500) * glm::two_pi<float>();
@@ -205,6 +207,7 @@ namespace Proc::Opr
 		//return std::lerp(0.5f, this_offst, l_fak);
 		return val;
 	}
+	*/
 
 	void AddRing(Data data)
 	{
