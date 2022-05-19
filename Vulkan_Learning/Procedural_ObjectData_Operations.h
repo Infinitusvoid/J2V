@@ -9,7 +9,7 @@
 #include <math.h>
 #include <functional>
 #include "glm/glm.hpp"
-
+#include "Ring_Example_000.h"
 
 namespace Proc::Opr
 {
@@ -167,9 +167,15 @@ namespace Proc::Opr
 			add_quad(data,v0, v1, v2, v3, color);
 		};
 
+		Cosmos::Ring_Example_000 ring_000;
+		ring_000.init();
+		ring_000.build(lambda);
+
 		Cosmos::Procedural_Ring r;
 		r.init_example_0();
 		r.build(lambda);
+
+
 	}
 
 }
