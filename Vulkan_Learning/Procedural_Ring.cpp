@@ -2,7 +2,7 @@
 
 namespace Cosmos
 {
-	
+	/*
 	void loop2d(int sy,int sx, const std::function<void(int, int)> f)
 	{
 		for (int y = 0; y < sy; y++)
@@ -12,7 +12,7 @@ namespace Cosmos
 			}
 		}
 	}
-
+	*/
 
 	void Procedural_Ring::build(const std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad)
 	{
