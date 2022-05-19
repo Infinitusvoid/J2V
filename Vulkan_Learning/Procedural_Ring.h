@@ -26,8 +26,6 @@ namespace Cosmos
 		
 		void build( const std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad );
 		
-		//void init_example_0();
-
 		static float const identitiy(const float v) { return v; }
 		
 	private:
@@ -44,10 +42,6 @@ namespace Cosmos
 			std::function<void(glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)> f_addQuad,
 			std::function<float(int, int)> f_radius
 		);
-		
-		//static float m_example_0_external(int r, int l);
-		
-		//static float m_example_0_internal(int r, int l);
 		
 	};
 }
