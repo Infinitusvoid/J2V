@@ -1,5 +1,6 @@
 #pragma once
-class Elements_3d
-{
-};
 
+namespace Cosmos::Elements_3d
+{
+
+}
