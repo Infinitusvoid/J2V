@@ -11,10 +11,6 @@
 
 namespace Proc
 {
-	
-
-	
-
 	class Procedural_Generation
 	{
 	public:
@@ -23,6 +19,4 @@ namespace Proc
 
 		std::vector<Cosmos::Data_Types::Procedural_ObjectData*> data;
 	};
-
-
 }
