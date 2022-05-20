@@ -16,7 +16,7 @@ namespace Proc::Opr
 	
 	typedef Procedural_ObjectData* const  Data;
 
-	static void vertices_randomize_positions(Data data, const float rnd_ammout)
+	void vertices_randomize_positions(Data data, const float rnd_ammout)
 	{
 		for (auto& v : data->vertices)
 		{
@@ -28,7 +28,7 @@ namespace Proc::Opr
 	}
 	
 	// Quads
-	static void add_quad_every_vertex_color(
+	void add_quad_every_vertex_color(
 		Data data,
 		const glm::vec3& p0,
 		const glm::vec3& p1,
@@ -99,7 +99,7 @@ namespace Proc::Opr
 
 	}
 
-	static void add_quad(
+	void add_quad(
 		Data data,
 		const glm::vec3& p0,
 		const glm::vec3& p1,
@@ -167,7 +167,7 @@ namespace Proc::Opr
 
 	}
 	
-	static void add_quad_rnd_color(Data data, glm::vec3 v0, glm::vec3 v1, glm::vec3 v2, glm::vec3 v3)
+	void add_quad_rnd_color(Data data, glm::vec3 v0, glm::vec3 v1, glm::vec3 v2, glm::vec3 v3)
 	{
 		//srand(time(NULL));
 		glm::vec3 color = glm::vec3(rand() / static_cast<float>(RAND_MAX),
@@ -178,7 +178,7 @@ namespace Proc::Opr
 	}
 
 	
-	static void add_circular(Data data,
+	void add_circular(Data data,
 		const int sections,
 		const float radius_max,
 		const float radius_min,
@@ -243,7 +243,7 @@ namespace Proc::Opr
 	//TODO make the same interface, but it's more efficienet than this one
 	//than write a test that will give you confidence that the functions produce same results
 	//you look at Data data.
-	static void add_double_layer_grid(
+	void add_double_layer_grid(
 		Data data,
 		const int size_x,
 		const int size_y,
@@ -319,7 +319,7 @@ namespace Proc::Opr
 		//add_quad_rnd_color(data, v0, v1, v2, v3);
 	}
 
-	static void AddRing(Data data)
+	void AddRing(Data data)
 	{
 		constexpr int num_x = 800;
 		constexpr int num_y = 800;
