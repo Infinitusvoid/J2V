@@ -20,5 +20,11 @@ namespace Cosmos::Operations_3d
 		const glm::vec3& color_3);
 
 	void AddRing(Mesh data, int num_x, int num_y);
+
+	void ring_002(
+		Mesh data,
+		int num_x,
+		int num_y,
+		const Cosmos::Data_Types::Info::Ring_Info& ring_info);
 }
 

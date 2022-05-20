@@ -5,7 +5,9 @@
 
 // std
 #include <functional>
+#include <vector>
 
+#include "Data_Types.h"
 
 namespace Cosmos::Operations_3d
 {
@@ -404,9 +406,134 @@ namespace Cosmos::Operations_3d
 		add_double_layer_grid(data, num_x, num_y, lambda);
 	}
 
-	void ring_002(Mesh data, int num_x, int num_y)
+	void ring_002(
+		Mesh data,
+		int num_x,
+		int num_y,
+		const Cosmos::Data_Types::Info::Ring_Info& ring_info)
 	{
+		
+
+		const float x_proc = 1.0f / (float)num_x;
+		const float y_proc = 1.0f / (float)num_y;
+
+		auto lambda = [x_proc, y_proc, &ring_info](glm::vec3 v, glm::vec3& v1_out, glm::vec3& v1_out_color, glm::vec3& v2_v_out, glm::vec3& v2_out_color) {
+
+
+
+			v.x *= x_proc;// * 5.0;
+			v.z *= y_proc;// * 5.0;
+
+			const float angle = v.x * glm::two_pi<float>();
+			const float length = v.z;
+
+			// v1
+			{
+				float amp_modul_a = ring_info.radius_a;
+				for (int i = 0; i < ring_info.sinus_signals_a.size(); i++)
+				{
+					amp_modul_a += ring_info.sinus_signals_a[i].amplitude * sin(ring_info.sinus_signals_a[i].offset + ring_info.sinus_signals_a[i].frequency * angle);
+				}
+
+
+				float lerp_fak = 1 - (abs(length - 0.5f) * 2);
+				lerp_fak = pow(lerp_fak, ring_info.interpolation_exponent_a);
+
+				amp_modul_a = std::lerp(ring_info.radius_merge, amp_modul_a, lerp_fak);
+
+
+
+				v1_out.x = amp_modul_a * glm::sin(angle);
+				v1_out.y = amp_modul_a * glm::cos(angle);
+				v1_out.z = length * 10;
+
+
+				v1_out_color = glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
+			}
+
+			//v2
+			{
+				float amp_modul_b = ring_info.radius_b;
+				for (int i = 0; i < ring_info.sinus_signals_b.size(); i++)
+				{
+					amp_modul_b += ring_info.sinus_signals_b[i].amplitude * sin(ring_info.sinus_signals_b[i].offset + ring_info.sinus_signals_b[i].frequency * angle);
+				}
+
+
+				float lerp_fak = 1 - (abs(length - 0.5f) * 2);
+				lerp_fak = pow(lerp_fak, ring_info.interpolation_exponent_b);
+
+				amp_modul_b = std::lerp(ring_info.radius_merge, amp_modul_b, lerp_fak);
+
+
+
+				v2_v_out.x = amp_modul_b * glm::sin(angle);
+				v2_v_out.y = amp_modul_b * glm::cos(angle);
+				v2_v_out.z = length * 10;
+
+
+				v2_out_color = glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
+			}
+
+			
+
+
+			/*
+			v1_out_color += (glm::vec3(rand() / static_cast<float>(RAND_MAX),
+				rand() / static_cast<float>(RAND_MAX),
+				rand() / static_cast<float>(RAND_MAX)) *
+				glm::vec3(0.2f, 0.2f, 0.2f));
+			*/
+
+			// v1 end
+
+
+			// v2
+			/*
+			float amp_modul_2 = 2.0f +
+				0.015 * sin(length * glm::two_pi<float>() * 16) +
+				0.015 * sin(length * glm::two_pi<float>() * 6) +
+				0.1 * sin(angle * 7) +
+				0.025 * sin(angle * 4);
+
+
+			float lerp_fak_2 = 1 - (abs(length - 0.5f) * 2);
+			lerp_fak_2 = pow(lerp_fak_2, 0.33f);
+
+			float val2 = std::lerp(0.5f, amp_modul_2, lerp_fak_2);
+
+			amp_modul_2 = val2;
+
+			v2_v_out.x = 0.0f * amp_modul_2 * glm::sin(angle);
+			v2_v_out.y = 0.0f * amp_modul_2 * glm::cos(angle);
+			v2_v_out.z = 0.0f * length * 10.0f;
+
+			v2_v_out.y += -0.15f;
+
+			v2_v_out = v2_v_out;
+
+			v2_out_color = glm::vec3(1.0, 0.5, 0.1f);
+			v2_out_color += (glm::vec3(rand() / static_cast<float>(RAND_MAX),
+				rand() / static_cast<float>(RAND_MAX),
+				rand() / static_cast<float>(RAND_MAX)) *
+				glm::vec3(0.2f, 0.2f, 0.2f));
+
+
+			v2_out_color *= glm::vec3(
+				0.0,
+				1.0f * glm::sin(angle * 25) * glm::sin(length * 25) + 0.2f * glm::sin(angle * 25 + glm::sin(length * 215)) + 0.05f * glm::sin(angle * 125 + glm::sin(length * 615)),
+				pow(glm::sin(sin(angle * 15) * sin(length * 10) * 25), 4)
+			);
+			*/
+
+			// v2 end
+		};
+
+		add_double_layer_grid(data, num_x, num_y, lambda);
+
+		
 		//2x
+		//{Signal
 		//vector<{frequeny amplitude offset}> //Probably should be in datatypes
 
 		//2x

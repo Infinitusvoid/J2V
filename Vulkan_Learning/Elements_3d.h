@@ -2,13 +2,11 @@
 
 #include "Data_Types.h"
 
+#include <vector>
+
 namespace Cosmos::Elements_3d
 {
-	struct Ring_Info
-	{
-		int num_x;
-		int num_y;
-	};
+	
 
-	void CreateRing(const Ring_Info& ring_info, Cosmos::Data_Types::Object3d_Data* pobj);
+	void CreateRing(const Cosmos::Data_Types::Info::Ring_Info& ring_info, Cosmos::Data_Types::Object3d_Data* pobj);
 }
