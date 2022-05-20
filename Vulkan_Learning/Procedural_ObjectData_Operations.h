@@ -1,15 +1,15 @@
 #pragma once
 
 #include "Procedural_Generation.h";
-#include "Procedural_Ring.h"
-#include "Ring_Example_000.h"
 
 // libs
 #include <vector>
 #include <math.h>
 #include <functional>
 #include "glm/glm.hpp"
-#include "Ring_Example_000.h"
+
+//here is PI and you should have this in .cpp file.
+//#include <glm/gtc/constants.hpp>
 
 namespace Proc::Opr
 {

@@ -25,9 +25,6 @@
     <Filter Include="Source Files\Cosmos\Ring">
       <UniqueIdentifier>{8896e986-8535-4f23-b9a0-8bf3d5149bcd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Cosmos\Ring\examples">
-      <UniqueIdentifier>{c2c322a3-77ab-42af-ab4a-0fc29e0014d2}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lve_window.cpp">
@@ -78,14 +75,8 @@
     <ClCompile Include="Universe_Controller.cpp">
       <Filter>Source Files\Cosmos</Filter>
     </ClCompile>
-    <ClCompile Include="Procedural_Ring.cpp">
-      <Filter>Source Files\Cosmos\Ring</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Ring_Example_000.cpp">
-      <Filter>Source Files\Cosmos\Ring\examples</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -148,12 +139,6 @@
     </ClInclude>
     <ClInclude Include="Universe_Controller.h">
       <Filter>Source Files\Cosmos</Filter>
-    </ClInclude>
-    <ClInclude Include="Procedural_Ring.h">
-      <Filter>Source Files\Cosmos\Ring</Filter>
-    </ClInclude>
-    <ClInclude Include="Ring_Example_000.h">
-      <Filter>Source Files\Cosmos\Ring\examples</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
