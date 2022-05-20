@@ -1,6 +1,6 @@
 #include "Ring_Example_000.h"
 
-namespace Cosm os
+namespace Cosmos
 {
 	/*
 	float Ring_Example_000::m_example_0_external(int r, int l)
