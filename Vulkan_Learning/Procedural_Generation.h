@@ -17,6 +17,6 @@ namespace Proc
 		Procedural_Generation();
 		~Procedural_Generation();
 
-		std::vector<Cosmos::Data_Types::Procedural_ObjectData*> data;
+		Cosmos::Data_Types::VectorOfPointers_PointingTo_Procedural_ObjectData data;
 	};
 }

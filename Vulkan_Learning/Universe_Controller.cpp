@@ -32,6 +32,7 @@ namespace Cosmos
 		//std::cout << "Time for one frame" << frameInfo.frameTime << "\n";
 		ellapsed_time += frameInfo.frameTime;
 
+		// - Deleting objects
 		if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) {
 			//std::cout << ellapsed_time << "\n";
 
@@ -50,6 +51,7 @@ namespace Cosmos
 			}
 		}
 
+		// - Number of game objects
 		if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS) {
 			std::cout << "gameObjects size : " << frameInfo.gameObjects.size() << "\n";
 		}

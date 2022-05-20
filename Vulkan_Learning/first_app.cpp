@@ -198,7 +198,7 @@ namespace lve {
             if (pc.data.size() > 0)
             {
 
-                for(Cosmos::Data_Types::Procedural_ObjectData* data_obj : pc.data)//for (Proc::Procedural_ObjectData* data_obj : pc.data)
+                for(Cosmos::Data_Types::Object3d_Data* data_obj : pc.data)//for (Proc::Procedural_ObjectData* data_obj : pc.data)
                 {
                     Lve_model::Builder modelBuilder{};
                     modelBuilder.vertices = std::vector<Lve_model::Vertex>(data_obj->vertices.size());

@@ -19,7 +19,7 @@
 namespace Proc::Opr
 {
 	
-	typedef Cosmos::Data_Types::Procedural_ObjectData* const  Data;
+	typedef Cosmos::Data_Types::Object3d_Data* const  Data;
 
 	void vertices_randomize_positions(Data data, const float rnd_ammout)
 	{

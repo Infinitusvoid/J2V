@@ -70,7 +70,7 @@ namespace Proc
         float z = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
         */
 
-        Cosmos::Data_Types::Procedural_ObjectData* pobj = new Cosmos::Data_Types::Procedural_ObjectData();
+        Cosmos::Data_Types::Object3d_Data* pobj = new Cosmos::Data_Types::Object3d_Data();
 
        
         float x = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
