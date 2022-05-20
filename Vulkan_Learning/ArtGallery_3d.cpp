@@ -26,8 +26,8 @@ namespace Cosmos::ArtGallery_3d
 
 		ring_info.interpolation_exponent_a = 2.0f;
 
-		ring_info.sinus_signals_lengthAttribute_a_radius.push_back({ 120.0f, 0.6f, 0.0f });
-		ring_info.sinus_signals_lengthAttribute_a_radius.push_back({ 125.0f, 0.525f, 0.0f });
+		ring_info.sinus_signals_lengthAttribute_a_radius.push_back({ 120.0f, 0.2f, 0.0f });
+		ring_info.sinus_signals_lengthAttribute_a_radius.push_back({ 125.0f, 0.125f, 0.0f });
 
 		//b
 		ring_info.radius_b = 8;
