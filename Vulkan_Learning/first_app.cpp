@@ -20,9 +20,11 @@
 
 // cosmos
 #include "Procedural_Generation.h"
-#include "Universe_Controller.h"
+
 
 #include "Data_Types.h"
+
+#include <iostream>
 
 namespace lve {
 
@@ -78,15 +80,20 @@ namespace lve {
         viewerObject.transform.translation.z = -2.5f;
         KeyboardMovementController cameraController{};
 
-        //Cosmos
-        Cosmos::Universe_Controller universe_con;
-        //
+       
 
         auto currentTime = std::chrono::high_resolution_clock::now();
         while (!lveWindow.shouldClose()) {
             glfwPollEvents();
 
             // Cosmos
+            if (universe_con.call_generate)
+            {
+                universe_con.call_generate = false;
+                My_ProcedurallyGenerateNewObject_Cosmos();
+                std::cout << "Generated!" << std::endl;
+            }
+
             if (glfwGetKey(lveWindow.getGLFWwindow(), GLFW_KEY_SPACE) == GLFW_PRESS) { //GLFW_KEY_K) == GLFW_PRESS) { // I Need to remove this
                 My_ProcedurallyGenerateNewObject_2();
             }
@@ -186,6 +193,13 @@ namespace lve {
             gameObjects.emplace(pointLight.getId(), std::move(pointLight));
         }
         
+    }
+
+
+    void FirstApp::My_ProcedurallyGenerateNewObject_Cosmos()
+    {
+        
+
     }
 
   

@@ -10,6 +10,9 @@
 #include <memory>
 #include <vector>
 
+// Cosmos
+#include "Universe_Controller.h"
+
 namespace lve {
 	class FirstApp {
 	public:
@@ -31,9 +34,12 @@ namespace lve {
 		LveDevice lveDevice{ lveWindow };
 		LveRenderer lveRenderer{ lveWindow, lveDevice };
 
-		// Cosmos
+		
+		// - Cosmos
+		Cosmos::Universe_Controller universe_con;
 		void My_ProcedurallyGenerateNewObject_2();
-// Cosmos
+		void My_ProcedurallyGenerateNewObject_Cosmos();
+		// -
 
 		// note: order of declarations matters
 		std::unique_ptr<LveDescriptorPool> globalPool{};

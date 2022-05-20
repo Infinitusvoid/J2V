@@ -6,9 +6,11 @@
 #include <memory>
 
 #include "Procedural_Generation.h"
-#include "Lve_model.h"
+//#include "Lve_model.h"
 
 #include "first_app.h"
+
+
 
 namespace Cosmos
 {
@@ -23,14 +25,18 @@ namespace Cosmos
 
 	}
 
-	
-	
-
 	void Universe_Controller::loop(GLFWwindow* window, lve::FrameInfo& frameInfo)
 	{
+
+
 		//std::cout << "Frame : " << frameInfo.frameIndex << "\n"; //It's just oscilating betwen 0 and 1
 		//std::cout << "Time for one frame" << frameInfo.frameTime << "\n";
 		ellapsed_time += frameInfo.frameTime;
+
+
+		if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS) {
+			this->call_generate = true;
+		}
 
 		// - Deleting objects
 		if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) {
