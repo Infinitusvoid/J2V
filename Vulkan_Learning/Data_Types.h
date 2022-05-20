@@ -2,6 +2,7 @@
 
 #include <glm/glm.hpp>
 #include <vector>
+#include <functional>
 
 namespace Cosmos::Data_Types
 {
@@ -49,12 +50,15 @@ namespace Cosmos::Data_Types
 			float interpolation_exponent_a;
 			float interpolation_exponent_b;
 
-			std::vector<Cosmos::Data_Types::Frequency_Amplitude_Offset<float>> sinus_signals_angleAttribute_a;
-			std::vector<Cosmos::Data_Types::Frequency_Amplitude_Offset<float>> sinus_signals_angleAttribute_b;
+			std::vector<Cosmos::Data_Types::Frequency_Amplitude_Offset<float>> sinus_signals_angleAttribute_a_radius;
+			std::vector<Cosmos::Data_Types::Frequency_Amplitude_Offset<float>> sinus_signals_angleAttribute_b_radius;
 
-			std::vector<Cosmos::Data_Types::Frequency_Amplitude_Offset<float>> sinus_signals_lengthAttribute_a;
-			std::vector<Cosmos::Data_Types::Frequency_Amplitude_Offset<float>> sinus_signals_lengthAttribute_b;
+			std::vector<Cosmos::Data_Types::Frequency_Amplitude_Offset<float>> sinus_signals_lengthAttribute_a_radius;
+			std::vector<Cosmos::Data_Types::Frequency_Amplitude_Offset<float>> sinus_signals_lengthAttribute_b_radius;
 
+			//radius, amp1, amp2, angle, length
+			std::function<glm::vec3(float, float, float, float)> f_color_a;
+			std::function<glm::vec3(float, float, float, float)> f_color_b;
 		};
 	}
 
