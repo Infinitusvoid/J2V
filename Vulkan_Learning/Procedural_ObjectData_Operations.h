@@ -247,7 +247,7 @@ namespace Proc::Opr
 		Data data,
 		const int size_x,
 		const int size_y,
-		const std::function<void(const glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)>& f)
+		const std::function<void(const glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&, glm::vec3&)>& f_disp)
 	{
 		// ring one (internal / exterial )
 		glm::vec3 a_v0;
@@ -277,10 +277,10 @@ namespace Proc::Opr
 			{
 				if (x == 0)
 				{
-					f(glm::vec3(0.0f, 0.0f, 0.0f + y), a_v0, a_v0_color, b_v0, b_v0_color);
-					f(glm::vec3(0.0f, 0.0f, 1.0f + y), a_v1, a_v1_color, b_v1, b_v1_color);
-					f(glm::vec3(1.0f, 0.0f, 1.0f + y), a_v2, a_v2_color, b_v2, b_v2_color);
-					f(glm::vec3(1.0f, 0.0f, 0.0f + y), a_v3, a_v3_color, b_v3, b_v3_color);
+					f_disp(glm::vec3(0.0f, 0.0f, 0.0f + y), a_v0, a_v0_color, b_v0, b_v0_color);
+					f_disp(glm::vec3(0.0f, 0.0f, 1.0f + y), a_v1, a_v1_color, b_v1, b_v1_color);
+					f_disp(glm::vec3(1.0f, 0.0f, 1.0f + y), a_v2, a_v2_color, b_v2, b_v2_color);
+					f_disp(glm::vec3(1.0f, 0.0f, 0.0f + y), a_v3, a_v3_color, b_v3, b_v3_color);
 				}
 				else
 				{
@@ -295,8 +295,8 @@ namespace Proc::Opr
 					b_v1_color = b_v2_color;
 
 
-					f(glm::vec3(1.0f + x, 0.0f, 1.0f + y), a_v2, a_v2_color, b_v2, b_v2_color);
-					f(glm::vec3(1.0f + x, 0.0f, 0.0f + y), a_v3, a_v3_color, b_v3, b_v3_color);
+					f_disp(glm::vec3(1.0f + x, 0.0f, 1.0f + y), a_v2, a_v2_color, b_v2, b_v2_color);
+					f_disp(glm::vec3(1.0f + x, 0.0f, 0.0f + y), a_v3, a_v3_color, b_v3, b_v3_color);
 				}
 
 
