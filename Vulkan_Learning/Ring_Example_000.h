@@ -3,13 +3,14 @@
 //#include "Procedural_Ring.h"
 
 // std
-#include <iostream>
-#include <functional>
-#include "Procedural_Ring.h"
+//#include <iostream>
+//#include <functional>
+//#include "Procedural_Ring.h"
 
 // libs
-#include <glm/glm.hpp>
+//#include <glm/glm.hpp>
 
+/*
 namespace Cosmos
 {
 	class Ring_Example_000
@@ -34,5 +35,5 @@ namespace Cosmos
 	};
 
 }
-
+*/
 

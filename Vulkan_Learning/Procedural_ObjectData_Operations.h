@@ -16,7 +16,7 @@ namespace Proc::Opr
 	
 	typedef Procedural_ObjectData* const  Data;
 
-	void vertices_randomize_positions(Data data, const float rnd_ammout)
+	static void vertices_randomize_positions(Data data, const float rnd_ammout)
 	{
 		for (auto& v : data->vertices)
 		{
@@ -27,8 +27,8 @@ namespace Proc::Opr
 		}
 	}
 	
-
-	void add_quad_every_vertex_color(
+	// Quads
+	static void add_quad_every_vertex_color(
 		Data data,
 		const glm::vec3& p0,
 		const glm::vec3& p1,
@@ -99,8 +99,7 @@ namespace Proc::Opr
 
 	}
 
-
-	void add_quad(
+	static void add_quad(
 		Data data,
 		const glm::vec3& p0,
 		const glm::vec3& p1,
@@ -168,9 +167,18 @@ namespace Proc::Opr
 
 	}
 	
+	static void add_quad_rnd_color(Data data, glm::vec3 v0, glm::vec3 v1, glm::vec3 v2, glm::vec3 v3)
+	{
+		//srand(time(NULL));
+		glm::vec3 color = glm::vec3(rand() / static_cast<float>(RAND_MAX),
+			rand() / static_cast<float>(RAND_MAX),
+			rand() / static_cast<float>(RAND_MAX));
+
+		add_quad(data, v0, v1, v2, v3, color);
+	}
 
 	
-	void add_circular(Data data,
+	static void add_circular(Data data,
 		const int sections,
 		const float radius_max,
 		const float radius_min,
@@ -231,20 +239,11 @@ namespace Proc::Opr
 		
 	}
 	
-	void add_quad_rnd_color(Data data, glm::vec3 v0, glm::vec3 v1, glm::vec3 v2, glm::vec3 v3)
-	{
-		//srand(time(NULL));
-		glm::vec3 color = glm::vec3(rand() / static_cast<float>(RAND_MAX),
-			rand() / static_cast<float>(RAND_MAX),
-			rand() / static_cast<float>(RAND_MAX));
 
-		add_quad(data, v0, v1, v2, v3, color);
-	}
-	
 	//TODO make the same interface, but it's more efficienet than this one
 	//than write a test that will give you confidence that the functions produce same results
 	//you look at Data data.
-	void AddGrid(
+	static void add_double_layer_grid(
 		Data data,
 		const int size_x,
 		const int size_y,
@@ -320,7 +319,7 @@ namespace Proc::Opr
 		//add_quad_rnd_color(data, v0, v1, v2, v3);
 	}
 
-	void AddRing(Data data)
+	static void AddRing(Data data)
 	{
 		constexpr int num_x = 800;
 		constexpr int num_y = 800;
@@ -341,7 +340,7 @@ namespace Proc::Opr
 			// v1
 			float amp_modul = 1.0f +
 				0.015 * sin(length * glm::two_pi<float>() * 10) +
-				0.1 * sin(angle * 15)  + 
+				0.100 * sin(angle * 15)  + 
 				0.025 * sin(angle * 22);
 
 
@@ -411,7 +410,7 @@ namespace Proc::Opr
 			// v2 end
 		};
 
-		AddGrid(data, num_x, num_y, lambda);
+		add_double_layer_grid(data, num_x, num_y, lambda);
 		/*
 		auto lambda = [&data](glm::vec3& v0, glm::vec3& v1, glm::vec3& v2, glm::vec3& v3, glm::vec3 color) {
 			//glm::vec3 color{ 0.5, 0.8, 0.6 };
@@ -425,9 +424,6 @@ namespace Proc::Opr
 		//Cosmos::Procedural_Ring r;
 		//r.init_example_0();
 		//r.build(lambda);
-		
-
-
 	}
 
 }
