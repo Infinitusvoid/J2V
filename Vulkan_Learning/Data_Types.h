@@ -48,8 +48,13 @@ namespace Cosmos::Data_Types
 			float radius_merge;
 			float interpolation_exponent_a;
 			float interpolation_exponent_b;
-			std::vector<Cosmos::Data_Types::Frequency_Amplitude_Offset<float>> sinus_signals_a;
-			std::vector<Cosmos::Data_Types::Frequency_Amplitude_Offset<float>> sinus_signals_b;
+
+			std::vector<Cosmos::Data_Types::Frequency_Amplitude_Offset<float>> sinus_signals_angleAttribute_a;
+			std::vector<Cosmos::Data_Types::Frequency_Amplitude_Offset<float>> sinus_signals_angleAttribute_b;
+
+			std::vector<Cosmos::Data_Types::Frequency_Amplitude_Offset<float>> sinus_signals_lengthAttribute_a;
+			std::vector<Cosmos::Data_Types::Frequency_Amplitude_Offset<float>> sinus_signals_lengthAttribute_b;
+
 		};
 	}
 

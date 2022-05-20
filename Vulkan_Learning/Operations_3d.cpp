@@ -430,9 +430,21 @@ namespace Cosmos::Operations_3d
 			// v1
 			{
 				float amp_modul_a = ring_info.radius_a;
-				for (int i = 0; i < ring_info.sinus_signals_a.size(); i++)
+				for (int i = 0; i < ring_info.sinus_signals_angleAttribute_a.size(); i++)
 				{
-					amp_modul_a += ring_info.sinus_signals_a[i].amplitude * sin(ring_info.sinus_signals_a[i].offset + ring_info.sinus_signals_a[i].frequency * angle);
+					amp_modul_a += ring_info.sinus_signals_angleAttribute_a[i].amplitude *
+						sin(ring_info.sinus_signals_angleAttribute_a[i].offset +
+							ring_info.sinus_signals_angleAttribute_a[i].frequency *
+							angle);
+				}
+
+				for (int i = 0; i < ring_info.sinus_signals_lengthAttribute_a.size(); i++)
+				{
+					amp_modul_a +=
+						ring_info.sinus_signals_lengthAttribute_a[i].amplitude *
+						sin(ring_info.sinus_signals_lengthAttribute_a[i].offset + 
+							ring_info.sinus_signals_lengthAttribute_a[i].frequency *
+							length);
 				}
 
 
@@ -454,9 +466,20 @@ namespace Cosmos::Operations_3d
 			//v2
 			{
 				float amp_modul_b = ring_info.radius_b;
-				for (int i = 0; i < ring_info.sinus_signals_b.size(); i++)
+				for (int i = 0; i < ring_info.sinus_signals_angleAttribute_b.size(); i++)
 				{
-					amp_modul_b += ring_info.sinus_signals_b[i].amplitude * sin(ring_info.sinus_signals_b[i].offset + ring_info.sinus_signals_b[i].frequency * angle);
+					amp_modul_b += ring_info.sinus_signals_angleAttribute_b[i].amplitude *
+						sin(ring_info.sinus_signals_angleAttribute_b[i].offset +
+							ring_info.sinus_signals_angleAttribute_b[i].frequency *
+							angle);
+				}
+
+				for (int i = 0; i < ring_info.sinus_signals_lengthAttribute_b.size(); i++)
+				{
+					amp_modul_b += ring_info.sinus_signals_lengthAttribute_b[i].amplitude *
+						sin(ring_info.sinus_signals_lengthAttribute_b[i].offset +
+							ring_info.sinus_signals_lengthAttribute_b[i].frequency *
+							length);
 				}
 
 
