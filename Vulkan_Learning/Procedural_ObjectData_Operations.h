@@ -411,19 +411,7 @@ namespace Proc::Opr
 		};
 
 		add_double_layer_grid(data, num_x, num_y, lambda);
-		/*
-		auto lambda = [&data](glm::vec3& v0, glm::vec3& v1, glm::vec3& v2, glm::vec3& v3, glm::vec3 color) {
-			//glm::vec3 color{ 0.5, 0.8, 0.6 };
-			add_quad(data,v0, v1, v2, v3, color);
-		};
 
-		Cosmos::Ring_Example_000 ring_000;
-		ring_000.build(lambda);
-		*/
-		
-		//Cosmos::Procedural_Ring r;
-		//r.init_example_0();
-		//r.build(lambda);
 	}
 
 }
