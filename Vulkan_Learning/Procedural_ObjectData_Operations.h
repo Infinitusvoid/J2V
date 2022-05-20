@@ -2,6 +2,8 @@
 
 #include "Procedural_Generation.h";
 
+//#include "Rings.h"
+
 // libs
 #include <vector>
 #include <math.h>
@@ -10,6 +12,7 @@
 
 //here is PI and you should have this in .cpp file.
 //#include <glm/gtc/constants.hpp>
+
 
 namespace Proc::Opr
 {
@@ -319,18 +322,16 @@ namespace Proc::Opr
 		//add_quad_rnd_color(data, v0, v1, v2, v3);
 	}
 
-	void AddRing(Data data)
+
+	void ring_001(Data data, const int num_x, const int num_y)
 	{
-		constexpr int num_x = 800;
-		constexpr int num_y = 800;
+		const float x_proc = 1.0f / (float)num_x;
+		const float y_proc = 1.0f / (float)num_y;
 
-		constexpr float x_proc = 1.0f / (float)num_x;
-		constexpr float y_proc = 1.0f /(float) num_y;
+		auto lambda = [x_proc, y_proc](glm::vec3 v, glm::vec3& v1_out, glm::vec3& v1_out_color, glm::vec3& v2_v_out, glm::vec3& v2_out_color) {
 
-		auto lambda = [](glm::vec3 v, glm::vec3& v1_out, glm::vec3& v1_out_color, glm::vec3& v2_v_out, glm::vec3& v2_out_color) {
-			
-			
-			
+
+
 			v.x *= x_proc;// * 5.0;
 			v.z *= y_proc;// * 5.0;
 
@@ -340,7 +341,7 @@ namespace Proc::Opr
 			// v1
 			float amp_modul = 1.0f +
 				0.015 * sin(length * glm::two_pi<float>() * 10) +
-				0.100 * sin(angle * 15)  + 
+				0.100 * sin(angle * 15) +
 				0.025 * sin(angle * 22);
 
 
@@ -355,18 +356,18 @@ namespace Proc::Opr
 			v.y = amp_modul * glm::cos(angle);
 			v.z = length * 10.0f;
 
-			
-			
+
+
 			v.y += -0.15f;
-			
+
 			v1_out = v;
 			v1_out_color = glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
 
 
-			v1_out_color += ( glm::vec3(rand() / static_cast<float>(RAND_MAX),
-									  rand() / static_cast<float>(RAND_MAX),
-									  rand() / static_cast<float>(RAND_MAX)) * 
-							  glm::vec3(0.2f, 0.2f, 0.2f));
+			v1_out_color += (glm::vec3(rand() / static_cast<float>(RAND_MAX),
+				rand() / static_cast<float>(RAND_MAX),
+				rand() / static_cast<float>(RAND_MAX)) *
+				glm::vec3(0.2f, 0.2f, 0.2f));
 
 			// v1 end
 
@@ -394,25 +395,34 @@ namespace Proc::Opr
 			v2_v_out.y += -0.15f;
 
 			v2_v_out = v2_v_out;
-			
+
 			v2_out_color = glm::vec3(1.0, 0.5, 0.1f);
-			v2_out_color  += (glm::vec3(rand() / static_cast<float>(RAND_MAX),
+			v2_out_color += (glm::vec3(rand() / static_cast<float>(RAND_MAX),
 				rand() / static_cast<float>(RAND_MAX),
 				rand() / static_cast<float>(RAND_MAX)) *
 				glm::vec3(0.2f, 0.2f, 0.2f));
-			
+
 
 			v2_out_color *= glm::vec3(
 				0.0,
-				1.0f * glm::sin(angle * 25) * glm::sin(length * 25) + 0.2f * glm::sin(angle * 25  + glm::sin(length * 215)) + 0.05f * glm::sin(angle * 125 + glm::sin(length * 615)),
+				1.0f * glm::sin(angle * 25) * glm::sin(length * 25) + 0.2f * glm::sin(angle * 25 + glm::sin(length * 215)) + 0.05f * glm::sin(angle * 125 + glm::sin(length * 615)),
 				pow(glm::sin(sin(angle * 15) * sin(length * 10) * 25), 4)
 			);
 			// v2 end
 		};
 
 		add_double_layer_grid(data, num_x, num_y, lambda);
+	}
+
+	
+	
+	void AddRing(Data data)
+	{
+		ring_001(data, 150, 150);
+		//Rings::ring_001(data, 50, 50);
 
 	}
+
 
 }
 

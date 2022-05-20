@@ -22,8 +22,26 @@
     <Filter Include="Source Files\Cosmos">
       <UniqueIdentifier>{052e471f-1766-40bc-98e8-85c70327ba09}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Cosmos\Ring">
-      <UniqueIdentifier>{8896e986-8535-4f23-b9a0-8bf3d5149bcd}</UniqueIdentifier>
+    <Filter Include="Source Files\Cosmos\Generative_3d_Collection">
+      <UniqueIdentifier>{7ee5f8e8-7045-4201-a318-e9935b0d28c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cosmos\Objects_3d_Controller">
+      <UniqueIdentifier>{2ef6cc31-5dc3-4e09-b675-391df71913fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cosmos\Elements_3d">
+      <UniqueIdentifier>{57eb4e44-97f5-4fe3-a524-b5c7183d9efe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cosmos\Operations_3d">
+      <UniqueIdentifier>{9d7b65e7-dde6-44e7-82e8-c37b11d9cc32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cosmos\Universe_Controller">
+      <UniqueIdentifier>{e83b414d-213f-4800-8317-7f4db414055d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cosmos\Utilitys">
+      <UniqueIdentifier>{d0200188-e3a1-4c0f-a9ca-d02cb01637ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cosmos\Data_Types">
+      <UniqueIdentifier>{0a6c97b2-07d6-4199-9065-5ad265f01e2a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -72,11 +90,23 @@
     <ClCompile Include="Procedural_Generation.cpp">
       <Filter>Source Files\Cosmos</Filter>
     </ClCompile>
-    <ClCompile Include="Universe_Controller.cpp">
-      <Filter>Source Files\Cosmos</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects_3d_Controller.cpp">
+      <Filter>Source Files\Cosmos\Objects_3d_Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Generative_3d_Collection.cpp">
+      <Filter>Source Files\Cosmos\Generative_3d_Collection</Filter>
+    </ClCompile>
+    <ClCompile Include="Elements_3d.cpp">
+      <Filter>Source Files\Cosmos\Elements_3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations_3d.cpp">
+      <Filter>Source Files\Cosmos\Operations_3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Universe_Controller.cpp">
+      <Filter>Source Files\Cosmos\Universe_Controller</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,17 +158,35 @@
     <ClInclude Include="point_light_system.h">
       <Filter>Source Files\systems</Filter>
     </ClInclude>
-    <ClInclude Include="MemoryLoger.h">
-      <Filter>Source Files\Cosmos</Filter>
-    </ClInclude>
     <ClInclude Include="Procedural_Generation.h">
       <Filter>Source Files\Cosmos</Filter>
     </ClInclude>
     <ClInclude Include="Procedural_ObjectData_Operations.h">
       <Filter>Source Files\Cosmos</Filter>
     </ClInclude>
+    <ClInclude Include="Objects_3d_Controller.h">
+      <Filter>Source Files\Cosmos\Objects_3d_Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Generative_3d_Collection.h">
+      <Filter>Source Files\Cosmos\Generative_3d_Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="Elements_3d.h">
+      <Filter>Source Files\Cosmos\Elements_3d</Filter>
+    </ClInclude>
+    <ClInclude Include="Operations_3d.h">
+      <Filter>Source Files\Cosmos\Operations_3d</Filter>
+    </ClInclude>
     <ClInclude Include="Universe_Controller.h">
-      <Filter>Source Files\Cosmos</Filter>
+      <Filter>Source Files\Cosmos\Universe_Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilitys.h">
+      <Filter>Source Files\Cosmos\Utilitys</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryLoger.h">
+      <Filter>Source Files\Cosmos\Utilitys</Filter>
+    </ClInclude>
+    <ClInclude Include="Datatypes.h">
+      <Filter>Source Files\Cosmos\Data_Types</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
