@@ -1,6 +1,7 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <vector>
 
 namespace Cosmos::Data_Types
 {
@@ -22,5 +23,7 @@ namespace Cosmos::Data_Types
 		std::vector<uint32_t> indices{};
 	};
 
+	typedef Object3d_Data* ptr_to_Object3d_Data;
+	
 	typedef std::vector<Cosmos::Data_Types::Object3d_Data*> VectorOfPointers_PointingTo_Procedural_ObjectData;
 }

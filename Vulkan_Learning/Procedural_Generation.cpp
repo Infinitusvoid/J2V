@@ -1,6 +1,7 @@
 #include "Procedural_Generation.h"
 
-#include "Procedural_ObjectData_Operations.h"
+//#include "Procedural_ObjectData_Operations.h"
+#include "Operations_3d.h"
 
 namespace Proc
 {
@@ -115,7 +116,11 @@ namespace Proc
             glm::vec3(1.0, 1, 0.0),
             glm::vec3(0.0, 1, 0.2));
         */
-        Proc::Opr::AddRing(pobj);
+        
+        //Proc::Opr::AddRing(pobj);
+        
+        
+        Cosmos::Operations_3d::AddRing(pobj);
 
         //Proc::Opr::vertices_randomize_positions(pobj, 0.05f);
 

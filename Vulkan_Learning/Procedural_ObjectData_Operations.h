@@ -19,8 +19,8 @@
 namespace Proc::Opr
 {
 	
-	typedef Cosmos::Data_Types::Object3d_Data* const  Data;
-
+	//typedef Cosmos::Data_Types::Object3d_Data* const  Data;
+	/*
 	void vertices_randomize_positions(Data data, const float rnd_ammout)
 	{
 		for (auto& v : data->vertices)
@@ -31,8 +31,9 @@ namespace Proc::Opr
 			v.position += glm::vec3{ x * rnd_ammout, y * rnd_ammout, z * rnd_ammout };
 		}
 	}
-	
+	*/
 	// Quads
+	/*
 	void add_quad_every_vertex_color(
 		Data data,
 		const glm::vec3& p0,
@@ -103,7 +104,9 @@ namespace Proc::Opr
 		//data->indices.pop_back(10);
 
 	}
+	*/
 
+	/*
 	void add_quad(
 		Data data,
 		const glm::vec3& p0,
@@ -181,8 +184,9 @@ namespace Proc::Opr
 
 		add_quad(data, v0, v1, v2, v3, color);
 	}
+	*/
 
-	
+	/*
 	void add_circular(Data data,
 		const int sections,
 		const float radius_max,
@@ -244,10 +248,11 @@ namespace Proc::Opr
 		
 	}
 	
-
+	*/
 	//TODO make the same interface, but it's more efficienet than this one
 	//than write a test that will give you confidence that the functions produce same results
 	//you look at Data data.
+	/*
 	void add_double_layer_grid(
 		Data data,
 		const int size_x,
@@ -317,14 +322,10 @@ namespace Proc::Opr
 			}
 		}
 		
-		//v0 = glm::vec3(0.0f, -0.18f, 0.0f);
-		//v1 = glm::vec3(0.0f, -0.18f, 1.0f);
-		//v2 = glm::vec3(1.0f, -0.18f, 1.0f);
-		//v3 = glm::vec3(1.0f, -0.18f, 0.0f);
-		//add_quad_rnd_color(data, v0, v1, v2, v3);
+		
 	}
-
-
+	*/
+	/*
 	void ring_001(Data data, const int num_x, const int num_y)
 	{
 		const float x_proc = 1.0f / (float)num_x;
@@ -415,16 +416,16 @@ namespace Proc::Opr
 
 		add_double_layer_grid(data, num_x, num_y, lambda);
 	}
-
+	*/
 	
-	
+	/*
 	void AddRing(Data data)
 	{
 		ring_001(data, 150, 150);
 		//Rings::ring_001(data, 50, 50);
 
 	}
-
+	*/
 
 }
 
