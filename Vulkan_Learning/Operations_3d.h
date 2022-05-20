@@ -19,6 +19,6 @@ namespace Cosmos::Operations_3d
 		const glm::vec3& color_2,
 		const glm::vec3& color_3);
 
-	void AddRing(Mesh data);
+	void AddRing(Mesh data, int num_x, int num_y);
 }
 

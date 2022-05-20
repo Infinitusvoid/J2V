@@ -404,11 +404,27 @@ namespace Cosmos::Operations_3d
 		add_double_layer_grid(data, num_x, num_y, lambda);
 	}
 
-
-
-	void AddRing(Mesh data)
+	void ring_002(Mesh data, int num_x, int num_y)
 	{
-		ring_001(data, 150, 150);
+		//2x
+		//vector<{frequeny amplitude offset}> //Probably should be in datatypes
+
+		//2x
+		//vector<{frequeny amplitude offset}> //Probably should be in datatypes //for colors
+
+		//2x 
+		//exponent dumping
+
+		//convergence radius value
+
+		//1x
+		//length multiplier
+	}
+
+	void AddRing(Mesh data, int num_x, int num_y)
+	{
+		
+		ring_001(data, num_x, num_y);
 		//Rings::ring_001(data, 50, 50);
 
 	}

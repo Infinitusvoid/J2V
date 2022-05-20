@@ -1,7 +1,8 @@
 #include "Procedural_Generation.h"
 
 //#include "Procedural_ObjectData_Operations.h"
-#include "Operations_3d.h"
+//#include "Operations_3d.h"
+#include "Order_Creator_3d.h";
 
 namespace Proc
 {
@@ -85,8 +86,12 @@ namespace Proc
         */
 
         Cosmos::Data_Types::Object3d_Data* pobj = new Cosmos::Data_Types::Object3d_Data();
+        
+        Cosmos::Order_Creator_3d::Create(pobj);
 
-       
+        
+
+       /*
         float x = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
         float y = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
         float z = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
@@ -98,7 +103,7 @@ namespace Proc
         //pobj.rotation = glm::vec3(0, 0, 0);
 
         pobj->scale = glm::vec3(1.0, 1.0, 1.0);
-
+        */
         /*
         Proc::Opr::add_quad(pobj,
             glm::vec3(0, 0, 0), //v0
@@ -133,7 +138,7 @@ namespace Proc
         //Proc::Opr::AddRing(pobj);
         
         
-        Cosmos::Operations_3d::AddRing(pobj);
+       
 
         //Proc::Opr::vertices_randomize_positions(pobj, 0.05f);
 
