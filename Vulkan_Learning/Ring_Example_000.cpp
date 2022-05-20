@@ -10,7 +10,8 @@ namespace Cosm os
 
 		float this_offst = 1.5f +
 			0.25f * glm::sin(r_angle * 10) +
-			0.1f * glm::sin(l_fak * glm::two_pi<float>() * 20.0f);
+			0.1f
+ * glm::sin(l_fak * glm::two_pi<float>() * 20.0f);
 		0.0025f * glm::sin(l_fak * glm::two_pi<float>() * 105.0f);
 
 		float lerp_fak = 1 - (abs(l_fak - 0.5f) * 2);

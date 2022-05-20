@@ -16,7 +16,7 @@ namespace Cosmos
 		int num_length_slices;
 		std::function<void()> f_init;
 		std::function<void(int, int)> f_update;
-		std::function<float(int, int)> f_radius_External;
+		std::fun ction<float(int, int)> f_radius_External;
 		std::function<float(int, int)> f_radius_Internal;
 		std::function<float(float)> f_disp_l = Procedural_Ring::identitiy;
 		std::function<float(float)> f_disp_r = Procedural_Ring::identitiy;
