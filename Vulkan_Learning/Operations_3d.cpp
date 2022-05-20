@@ -452,6 +452,9 @@ namespace Cosmos::Operations_3d
 				amp_modul_a += amp_a_0 + amp_a_1;
 				//radius, amp1, amp2, angle, length
 
+				//v1_out_color = glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
+				v1_out_color = ring_info.f_color_a(ring_info.radius_a, amp_a_0, amp_a_1, angle, length);
+
 				float lerp_fak = 1 - (abs(length - 0.5f) * 2);
 				lerp_fak = pow(lerp_fak, ring_info.interpolation_exponent_a);
 
@@ -464,28 +467,36 @@ namespace Cosmos::Operations_3d
 				v1_out.z = length * 10;
 
 
-				v1_out_color = glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
+
+
+				
 			}
 
 			//v2
 			{
 				float amp_modul_b = ring_info.radius_b;
+
+				float amp_b_0 = 0.0f;
 				for (int i = 0; i < ring_info.sinus_signals_angleAttribute_b_radius.size(); i++)
 				{
-					amp_modul_b += ring_info.sinus_signals_angleAttribute_b_radius[i].amplitude *
+					amp_b_0 += ring_info.sinus_signals_angleAttribute_b_radius[i].amplitude *
 						sin(ring_info.sinus_signals_angleAttribute_b_radius[i].offset +
 							ring_info.sinus_signals_angleAttribute_b_radius[i].frequency *
 							angle);
 				}
 
+				float amp_b_1 = 0;
 				for (int i = 0; i < ring_info.sinus_signals_lengthAttribute_b_radius.size(); i++)
 				{
-					amp_modul_b += ring_info.sinus_signals_lengthAttribute_b_radius[i].amplitude *
+					amp_b_1 += ring_info.sinus_signals_lengthAttribute_b_radius[i].amplitude *
 						sin(ring_info.sinus_signals_lengthAttribute_b_radius[i].offset +
 							ring_info.sinus_signals_lengthAttribute_b_radius[i].frequency *
 							length);
 				}
 
+				amp_modul_b += amp_b_0 + amp_b_1;
+
+				v2_out_color = ring_info.f_color_b(ring_info.radius_b, amp_b_0, amp_b_1, angle, length);
 
 				float lerp_fak = 1 - (abs(length - 0.5f) * 2);
 				lerp_fak = pow(lerp_fak, ring_info.interpolation_exponent_b);
@@ -499,7 +510,7 @@ namespace Cosmos::Operations_3d
 				v2_v_out.z = length * 10;
 
 
-				v2_out_color = glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
+				//v2_out_color = glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
 			}
 
 			

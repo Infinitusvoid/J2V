@@ -57,8 +57,8 @@ namespace Cosmos::Data_Types
 			std::vector<Cosmos::Data_Types::Frequency_Amplitude_Offset<float>> sinus_signals_lengthAttribute_b_radius;
 
 			//radius, amp1, amp2, angle, length
-			std::function<glm::vec3(float, float, float, float)> f_color_a;
-			std::function<glm::vec3(float, float, float, float)> f_color_b;
+			std::function<glm::vec3(float, float, float, float, float)> f_color_a;
+			std::function<glm::vec3(float, float, float, float, float)> f_color_b;
 		};
 	}
 

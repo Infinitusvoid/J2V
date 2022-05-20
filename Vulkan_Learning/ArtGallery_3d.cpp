@@ -41,6 +41,21 @@ namespace Cosmos::ArtGallery_3d
 
 		ring_info.interpolation_exponent_b = 2.0f;
 
+		//radius, amp1, amp2, angle, length
+		//std::function<glm::vec3(float, float, float, float)> f_color_a;
+		//std::function<glm::vec3(float, float, float, float)> f_color_b;
+		ring_info.f_color_a = [](float radius, float amp1, float amp2, float angle, float length) {
+			//return glm::vec3(0.01f, 0.8f, 0.3f);
+			return glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
+		};
+		//v1_out_color = glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
+
+		ring_info.f_color_b = [](float radius, float amp1, float amp2, float angle, float length) {
+			//return glm::vec3(0.01f, 0.8f, 0.3f);
+			return glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.4f);
+		};
+		//glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
+
 		Cosmos::Elements_3d::CreateRing(ring_info, pobj);
 	}
 }
