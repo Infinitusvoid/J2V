@@ -161,9 +161,6 @@
     <ClInclude Include="Procedural_Generation.h">
       <Filter>Source Files\Cosmos</Filter>
     </ClInclude>
-    <ClInclude Include="Procedural_ObjectData_Operations.h">
-      <Filter>Source Files\Cosmos</Filter>
-    </ClInclude>
     <ClInclude Include="Objects_3d_Controller.h">
       <Filter>Source Files\Cosmos\Objects_3d_Controller</Filter>
     </ClInclude>

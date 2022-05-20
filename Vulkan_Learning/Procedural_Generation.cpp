@@ -13,6 +13,14 @@ namespace Proc
 
     Procedural_Generation::Procedural_Generation()
     {
+        //We call object 3d controller -> which calls something in Generative 3d collection ( example small_rnd_ring() )
+        //Generate 3d collection -> is using one or multiple calls into Elements 3d to generate a scene (this is the class that's holds functions
+        //representing art peaces ( think of it as gallery ) Chouls I rename it to ArtGallery or Gallery ? 
+        
+        //Gallery uses Elements to assemle it's art peaces
+        //Elements uses operations to build it's staff
+        
+        
 
 
         /*
