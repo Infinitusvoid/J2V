@@ -178,7 +178,7 @@
     <ClCompile Include="Universe_Controller.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Datatypes.h" />
+    <ClInclude Include="Data_Types.h" />
     <ClInclude Include="first_app.h" />
     <ClInclude Include="Generative_3d_Collection.h" />
     <ClInclude Include="keybord_movement_controller.h" />

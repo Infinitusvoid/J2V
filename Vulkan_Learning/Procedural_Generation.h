@@ -7,27 +7,13 @@
 
 #include <math.h>       /* sin */
 
+#include "Data_Types.h"
+
 namespace Proc
 {
-	struct Vert
-	{
-		glm::vec3 position{};
-		glm::vec3 color{};
-		glm::vec3 normal{};
-		glm::vec2 uv{};
-	};
+	
 
-	struct Procedural_ObjectData
-	{
-		glm::vec3 position;
-		glm::vec3 rotation;
-		glm::vec3 scale;
-
-		std::vector<Vert> vertices{};
-		std::vector<uint32_t> indices{};
-
-
-	};
+	
 
 	class Procedural_Generation
 	{
@@ -35,7 +21,7 @@ namespace Proc
 		Procedural_Generation();
 		~Procedural_Generation();
 
-		std::vector<Procedural_ObjectData*> data;
+		std::vector<Cosmos::Data_Types::Procedural_ObjectData*> data;
 	};
 
 

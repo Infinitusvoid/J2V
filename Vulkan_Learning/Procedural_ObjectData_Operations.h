@@ -10,6 +10,8 @@
 #include <functional>
 #include "glm/glm.hpp"
 
+#include "Data_Types.h"
+
 //here is PI and you should have this in .cpp file.
 //#include <glm/gtc/constants.hpp>
 
@@ -17,7 +19,7 @@
 namespace Proc::Opr
 {
 	
-	typedef Procedural_ObjectData* const  Data;
+	typedef Cosmos::Data_Types::Procedural_ObjectData* const  Data;
 
 	void vertices_randomize_positions(Data data, const float rnd_ammout)
 	{
@@ -58,7 +60,7 @@ namespace Proc::Opr
 
 
 		{
-			Vert v;
+			Cosmos::Data_Types::Vert v;
 			v.position = p0;
 			v.color = color_0;
 			v.normal = normal;
@@ -66,7 +68,7 @@ namespace Proc::Opr
 		}
 
 		{
-			Vert v;
+			Cosmos::Data_Types::Vert v;
 			v.position = p1;
 			v.color = color_1;
 			v.normal = normal;
@@ -74,7 +76,7 @@ namespace Proc::Opr
 		}
 
 		{
-			Vert v;
+			Cosmos::Data_Types::Vert v;
 			v.position = p2;
 			v.color = color_2;
 			v.normal = normal;
@@ -82,7 +84,7 @@ namespace Proc::Opr
 		}
 
 		{
-			Vert v;
+			Cosmos::Data_Types::Vert v;
 			v.position = p3;
 			v.color = color_3;
 			v.normal = normal;
@@ -126,7 +128,7 @@ namespace Proc::Opr
 
 
 		{
-			Vert v;
+			Cosmos::Data_Types::Vert v;
 			v.position = p0;
 			v.color = color;
 			v.normal = normal;
@@ -134,7 +136,7 @@ namespace Proc::Opr
 		}
 
 		{
-			Vert v;
+			Cosmos::Data_Types::Vert v;
 			v.position = p1;
 			v.color = color;
 			v.normal = normal;
@@ -142,7 +144,7 @@ namespace Proc::Opr
 		}
 
 		{
-			Vert v;
+			Cosmos::Data_Types::Vert v;
 			v.position = p2;
 			v.color = color;
 			v.normal = normal;
@@ -150,7 +152,7 @@ namespace Proc::Opr
 		}
 
 		{
-			Vert v;
+			Cosmos::Data_Types::Vert v;
 			v.position = p3;
 			v.color = color;
 			v.normal = normal;

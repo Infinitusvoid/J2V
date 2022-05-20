@@ -22,6 +22,8 @@
 #include "Procedural_Generation.h"
 #include "Universe_Controller.h"
 
+#include "Data_Types.h"
+
 namespace lve {
 
     
@@ -196,13 +198,13 @@ namespace lve {
             if (pc.data.size() > 0)
             {
 
-                for (Proc::Procedural_ObjectData* data_obj : pc.data)
+                for(Cosmos::Data_Types::Procedural_ObjectData* data_obj : pc.data)//for (Proc::Procedural_ObjectData* data_obj : pc.data)
                 {
                     Lve_model::Builder modelBuilder{};
                     modelBuilder.vertices = std::vector<Lve_model::Vertex>(data_obj->vertices.size());
 
                     modelBuilder.vertices = std::vector<Lve_model::Vertex>();
-                    for (const Proc::Vert& vert : data_obj->vertices)
+                    for (const Cosmos::Data_Types::Vert& vert : data_obj->vertices)//for (const Proc::Vert& vert : data_obj->vertices)
                     {
                         modelBuilder.vertices.push_back({ { vert.position.x, vert.position.y, vert.position.z }, { vert.color.r, vert.color.g, vert.color.b }, {vert.normal.x, vert.normal.y, vert.normal.z} });
                     }

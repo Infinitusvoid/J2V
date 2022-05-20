@@ -185,7 +185,7 @@
     <ClInclude Include="MemoryLoger.h">
       <Filter>Source Files\Cosmos\Utilitys</Filter>
     </ClInclude>
-    <ClInclude Include="Datatypes.h">
+    <ClInclude Include="Data_Types.h">
       <Filter>Source Files\Cosmos\Data_Types</Filter>
     </ClInclude>
   </ItemGroup>
