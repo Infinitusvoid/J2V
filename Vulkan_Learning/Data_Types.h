@@ -40,7 +40,7 @@ namespace Cosmos::Data_Types
 
 	namespace Info
 	{
-		struct Ring_Info
+		struct Ring_Info_000
 		{
 			int num_x;
 			int num_y;
@@ -59,6 +59,11 @@ namespace Cosmos::Data_Types
 			//radius, amp1, amp2, angle, length
 			std::function<glm::vec3(float, float, float, float, float)> f_color_a;
 			std::function<glm::vec3(float, float, float, float, float)> f_color_b;
+		};
+
+		struct Ring_Info_001
+		{
+
 		};
 	}
 

@@ -8,7 +8,7 @@ namespace Cosmos::ArtGallery_3d
 	void Create_organic_sin_frequenc_based(Cosmos::Data_Types::Object3d_Data* pobj)
 	{
 		//Cosmos::Operations_3d::AddRing(pobj);
-		Cosmos::Data_Types::Info::Ring_Info ring_info{};
+		Cosmos::Data_Types::Info::Ring_Info_000 ring_info{};
 
 
 

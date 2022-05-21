@@ -25,6 +25,6 @@ namespace Cosmos::Operations_3d
 		Mesh data,
 		int num_x,
 		int num_y,
-		const Cosmos::Data_Types::Info::Ring_Info& ring_info);
+		const Cosmos::Data_Types::Info::Ring_Info_000& ring_info);
 }
 
