@@ -614,7 +614,7 @@ namespace Cosmos::Operations_3d
 
 					v1_out.x = ra * glm::sin(angle);
 					v1_out.y = ra * glm::cos(angle);
-					v1_out.z = length * 10;
+					v1_out.z = length * ring_info.length_multiplier;
 
 				}
 				
@@ -629,7 +629,7 @@ namespace Cosmos::Operations_3d
 
 					v2_v_out.x = rb * glm::sin(angle);
 					v2_v_out.y = rb * glm::cos(angle);
-					v2_v_out.z = length * 10;
+					v2_v_out.z = length * ring_info.length_multiplier;
 				}
 				
 				v1_out_color = glm::vec3(result.color_a_r, result.color_a_g, result.color_a_b);

@@ -73,6 +73,7 @@ namespace Cosmos::Data_Types
 			float color_b_r;
 			float color_b_g;
 			float color_b_b;
+			
 		};
 
 		struct Ring_Info_001
@@ -84,6 +85,7 @@ namespace Cosmos::Data_Types
 			float radius_merge;
 			float interpolation_exponent_a;
 			float interpolation_exponent_b;
+			float length_multiplier;
 
 			std::function<void(float angle, float length, Ring_Info_001_f_Result& result)> f;
 		};

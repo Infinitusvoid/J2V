@@ -65,23 +65,58 @@ namespace Cosmos::ArtGallery_3d
 		ring_info.interpolation_exponent_a = 0.2f;
 		ring_info.interpolation_exponent_b = 0.2f;
 		ring_info.radius_a = 1.0f;
-		ring_info.radius_b = 2.0f;
-		ring_info.radius_merge = 1.5f;
+		ring_info.radius_b = 1.5f;
+		ring_info.radius_merge = (ring_info.radius_a + ring_info.radius_b) * 0.5f;
+		ring_info.length_multiplier = 3.0f;
 
 		//std::function<void(float angle, float length, Ring_Info_001_f_Result& result)> f;
 		ring_info.f = [](float angle, float length, Data_Types::Info::Ring_Info_001_f_Result& result)
 		{
-			result.color_a_r = 1.0;
-			result.color_a_g = 0.0;
-			result.color_a_b = 0.0;
+			result.color_a_r = 0.01f;
+			result.color_a_g = 0.6f;
+			result.color_a_b = 0.1f;
 
-			result.color_b_r = 0.0;
-			result.color_b_g = 1.0;
-			result.color_b_b = 0.0;
+			result.color_b_r = 0.02f + 0.1;
+			result.color_b_g = 0.69f + 0.1;
+			result.color_b_b = 0.10f + 0.1;
 
-			result.radius_offset_a = 0.0f;
-			result.radius_offset_b = 0.0f;
+
+			if (true) //blend colors
+			{
+				float avr_r = (result.color_a_r + result.color_b_r) * 0.5f;
+				float avr_g = (result.color_a_g + result.color_b_g) * 0.5f;
+				float avr_b = (result.color_a_b + result.color_b_b) * 0.5f;
+
+				float lerp_fak = 1 - (abs(length - 0.5f) * 2);
+				lerp_fak = pow(lerp_fak, 0.05f);
+
+
+				result.color_a_r = std::lerp(avr_r, result.color_a_r, lerp_fak);
+				result.color_a_g = std::lerp(avr_g, result.color_a_g, lerp_fak);
+				result.color_a_b = std::lerp(avr_b, result.color_a_b, lerp_fak);
+				
+				result.color_b_r = std::lerp(avr_r, result.color_b_r, lerp_fak);
+				result.color_b_g = std::lerp(avr_g, result.color_b_g, lerp_fak);
+				result.color_b_b = std::lerp(avr_b, result.color_b_b, lerp_fak);
+				
+			}
 			
+
+			result.radius_offset_a = pow( 0.3 * sin(angle * 25.0f) + 0.3 * sin(length * 3.1415f * 10 * 2), 4.0);
+
+			//;
+			
+			
+			//std::abs(angle)
+			result.radius_offset_b = std::fmax((pow(std::fabs(fmod(std::fabs(length * 10), 1) - 0.5f) * 2, 6) - 0.3f) * (-1.0f), 0) * 0.1f;
+			
+			if ((result.radius_offset_b * 10.0 ) - 0.05 < 0)
+			{
+				result.color_b_r = 0.3;
+				result.color_b_g = 0.3;
+				result.color_b_b = 0.3;
+			}
+
 		};
 
 		Cosmos::Elements_3d::CreateRing_001(ring_info, pobj);
@@ -90,7 +125,7 @@ namespace Cosmos::ArtGallery_3d
 
 	void Create(Cosmos::Data_Types::Object3d_Data* pobj)
 	{
-		//Create_organic_sin_frequenc_based(pobj);
+		Create_organic_sin_frequenc_based(pobj);
 
 		Create_classical_jasna_1_style_ring(pobj);
 	}
