@@ -59,3 +59,4 @@ namespace Cosmos::ArtGallery_3d
 		Cosmos::Elements_3d::CreateRing(ring_info, pobj);
 	}
 }
+

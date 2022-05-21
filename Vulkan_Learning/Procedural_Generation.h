@@ -19,4 +19,5 @@ namespace Proc
 
 		Cosmos::Data_Types::VectorOfPointers_PointingTo_Procedural_ObjectData data;
 	};
+	void NewFunction();
 }

@@ -19,7 +19,10 @@ namespace Cosmos::Order_Creator_3d
         pobj->scale = glm::vec3(1.0, 1.0, 1.0);
 
         
+
         Cosmos::ArtGallery_3d::Create(pobj);
+
+
         
 	}
 }
