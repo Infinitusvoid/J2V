@@ -406,7 +406,7 @@ namespace Cosmos::Operations_3d
 		add_double_layer_grid(data, num_x, num_y, lambda);
 	}
 
-	void ring_002(
+	void ring_000(
 		Mesh data,
 		int num_x,
 		int num_y,
@@ -586,12 +586,57 @@ namespace Cosmos::Operations_3d
 		//length multiplier
 	}
 
-	void AddRing(Mesh data, int num_x, int num_y)
-	{
-		
-		ring_001(data, num_x, num_y);
-		//Rings::ring_001(data, 50, 50);
 
+	void ring_001(Mesh data, const Cosmos::Data_Types::Info::Ring_Info_001& ring_info)
+	{
+		const float x_proc = 1.0f / (float)ring_info.num_x;
+		const float y_proc = 1.0f / (float)ring_info.num_y;
+
+		auto lambda = [x_proc, y_proc, &ring_info](glm::vec3 v, glm::vec3& v1_out, glm::vec3& v1_out_color, glm::vec3& v2_v_out, glm::vec3& v2_out_color) {
+			v.x *= x_proc;
+			v.z *= y_proc;
+
+			const float angle = v.x * glm::two_pi<float>();
+			const float length = v.z;
+
+			{
+				Data_Types::Info::Ring_Info_001_f_Result result;
+				ring_info.f(angle, length, result);
+
+				result.radius_offset_b;
+				v1_out_color = result.color_a;
+				v2_out_color = result.color_b;
+
+				float ra = ring_info.radius_a + result.radius_offset_a;
+				float rb = ring_info.radius_b + result.radius_offset_b;
+
+				//a
+				float lerp_fak_a = 1 - (abs(length - 0.5f) * 2);
+				lerp_fak_a = pow(lerp_fak_a, ring_info.interpolation_exponent_a);
+
+				ra = std::lerp(ring_info.radius_merge, ra, lerp_fak_a);
+
+				v1_out.x = ra * glm::sin(angle);
+				v1_out.y = ra * glm::cos(angle);
+				v1_out.z = length * 10;
+
+				//b
+
+				float lerp_fak_b = 1 - (abs(length - 0.5f) * 2);
+				lerp_fak_b = pow(lerp_fak_b, ring_info.interpolation_exponent_b);
+
+				rb = std::lerp(ring_info.radius_merge, rb, lerp_fak_b);
+
+				v1_out.x = rb * glm::sin(angle);
+				v1_out.y = rb * glm::cos(angle);
+				v1_out.z = length * 10;
+			}
+
+		};
+		
+
+		add_double_layer_grid(data, ring_info.num_x, ring_info.num_y, lambda);
 	}
+
 
 }

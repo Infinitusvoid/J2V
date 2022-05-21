@@ -11,6 +11,6 @@ namespace Cosmos::Elements_3d
 	{
 		//Cosmos::Operations_3d::AddRing(pobj, ring_info.num_x, ring_info.num_y); //here is one but the could be multiple calls to different things
 
-		Cosmos::Operations_3d::ring_002(pobj, ring_info.num_x, ring_info.num_y, ring_info);
+		Cosmos::Operations_3d::ring_000(pobj, ring_info.num_x, ring_info.num_y, ring_info);
 	}
 }

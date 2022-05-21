@@ -61,9 +61,25 @@ namespace Cosmos::Data_Types
 			std::function<glm::vec3(float, float, float, float, float)> f_color_b;
 		};
 
+		struct Ring_Info_001_f_Result
+		{
+			float radius_offset_a;
+			float radius_offset_b;
+			glm::vec3 color_a;
+			glm::vec3 color_b;
+		};
+
 		struct Ring_Info_001
 		{
+			int num_x;
+			int num_y;
+			float radius_a;
+			float radius_b;
+			float radius_merge;
+			float interpolation_exponent_a;
+			float interpolation_exponent_b;
 
+			std::function<void(float angle, float length, Ring_Info_001_f_Result& result)> f;
 		};
 	}
 
