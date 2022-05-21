@@ -93,8 +93,6 @@ namespace Cosmos::Operations_3d
 
 	}
 
-
-
 	void add_quad(
 		Mesh data,
 		const glm::vec3& p0,
@@ -173,7 +171,6 @@ namespace Cosmos::Operations_3d
 		add_quad(data, v0, v1, v2, v3, color);
 	}
 
-
 	void add_circular(Mesh data,
 		const int sections,
 		const float radius_max,
@@ -234,7 +231,6 @@ namespace Cosmos::Operations_3d
 		}
 
 	}
-
 
 	//TODO make the same interface, but it's more efficienet than this one
 	//than write a test that will give you confidence that the functions produce same results
@@ -315,6 +311,7 @@ namespace Cosmos::Operations_3d
 		//add_quad_rnd_color(data, v0, v1, v2, v3);
 	}
 
+	/*
 	void ring_001(Mesh data, const int num_x, const int num_y)
 	{
 		const float x_proc = 1.0f / (float)num_x;
@@ -405,6 +402,7 @@ namespace Cosmos::Operations_3d
 
 		add_double_layer_grid(data, num_x, num_y, lambda);
 	}
+	*/
 
 	void ring_000(
 		Mesh data,
@@ -601,35 +599,43 @@ namespace Cosmos::Operations_3d
 
 			{
 				Data_Types::Info::Ring_Info_001_f_Result result;
+
 				ring_info.f(angle, length, result);
 
-				result.radius_offset_b;
-				v1_out_color = result.color_a;
-				v2_out_color = result.color_b;
+				
+				{
+					float ra = ring_info.radius_a + result.radius_offset_a;
 
-				float ra = ring_info.radius_a + result.radius_offset_a;
-				float rb = ring_info.radius_b + result.radius_offset_b;
+					//a
+					float lerp_fak_a = 1 - (abs(length - 0.5f) * 2);
+					lerp_fak_a = pow(lerp_fak_a, ring_info.interpolation_exponent_a);
 
-				//a
-				float lerp_fak_a = 1 - (abs(length - 0.5f) * 2);
-				lerp_fak_a = pow(lerp_fak_a, ring_info.interpolation_exponent_a);
+					ra = std::lerp(ring_info.radius_merge, ra, lerp_fak_a);
 
-				ra = std::lerp(ring_info.radius_merge, ra, lerp_fak_a);
+					v1_out.x = ra * glm::sin(angle);
+					v1_out.y = ra * glm::cos(angle);
+					v1_out.z = length * 10;
 
-				v1_out.x = ra * glm::sin(angle);
-				v1_out.y = ra * glm::cos(angle);
-				v1_out.z = length * 10;
-
+				}
+				
 				//b
 
-				float lerp_fak_b = 1 - (abs(length - 0.5f) * 2);
-				lerp_fak_b = pow(lerp_fak_b, ring_info.interpolation_exponent_b);
+				{
+					float rb = ring_info.radius_b + result.radius_offset_b;
+					float lerp_fak_b = 1 - (abs(length - 0.5f) * 2);
+					lerp_fak_b = pow(lerp_fak_b, ring_info.interpolation_exponent_b);
 
-				rb = std::lerp(ring_info.radius_merge, rb, lerp_fak_b);
+					rb = std::lerp(ring_info.radius_merge, rb, lerp_fak_b);
 
-				v1_out.x = rb * glm::sin(angle);
-				v1_out.y = rb * glm::cos(angle);
-				v1_out.z = length * 10;
+					v2_v_out.x = rb * glm::sin(angle);
+					v2_v_out.y = rb * glm::cos(angle);
+					v2_v_out.z = length * 10;
+				}
+				
+				v1_out_color = glm::vec3(result.color_a_r, result.color_a_g, result.color_a_b);
+				v2_out_color = glm::vec3(result.color_b_r, result.color_b_g, result.color_b_b);
+
+				int a = 10;
 			}
 
 		};

@@ -65,8 +65,14 @@ namespace Cosmos::Data_Types
 		{
 			float radius_offset_a;
 			float radius_offset_b;
-			glm::vec3 color_a;
-			glm::vec3 color_b;
+			
+			float color_a_r;
+			float color_a_g;
+			float color_a_b;
+
+			float color_b_r;
+			float color_b_g;
+			float color_b_b;
 		};
 
 		struct Ring_Info_001

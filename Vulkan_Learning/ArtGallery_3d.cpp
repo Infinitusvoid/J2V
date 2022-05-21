@@ -7,10 +7,7 @@ namespace Cosmos::ArtGallery_3d
 {
 	void Create_organic_sin_frequenc_based(Cosmos::Data_Types::Object3d_Data* pobj)
 	{
-		//Cosmos::Operations_3d::AddRing(pobj);
 		Cosmos::Data_Types::Info::Ring_Info_000 ring_info{};
-
-
 
 		ring_info.radius_merge = 6.0f;
 
@@ -62,13 +59,40 @@ namespace Cosmos::ArtGallery_3d
 	//TODO classical jasna 1 style ring
 	void Create_classical_jasna_1_style_ring(Cosmos::Data_Types::Object3d_Data* pobj)
 	{
+		Data_Types::Info::Ring_Info_001 ring_info;
+		ring_info.num_x = 500;
+		ring_info.num_y = 500;
+		ring_info.interpolation_exponent_a = 0.2f;
+		ring_info.interpolation_exponent_b = 0.2f;
+		ring_info.radius_a = 1.0f;
+		ring_info.radius_b = 2.0f;
+		ring_info.radius_merge = 1.5f;
 
+		//std::function<void(float angle, float length, Ring_Info_001_f_Result& result)> f;
+		ring_info.f = [](float angle, float length, Data_Types::Info::Ring_Info_001_f_Result& result)
+		{
+			result.color_a_r = 1.0;
+			result.color_a_g = 0.0;
+			result.color_a_b = 0.0;
+
+			result.color_b_r = 0.0;
+			result.color_b_g = 1.0;
+			result.color_b_b = 0.0;
+
+			result.radius_offset_a = 0.0f;
+			result.radius_offset_b = 0.0f;
+			
+		};
+
+		Cosmos::Elements_3d::CreateRing_001(ring_info, pobj);
 	}
 
 
 	void Create(Cosmos::Data_Types::Object3d_Data* pobj)
 	{
-		Create_organic_sin_frequenc_based(pobj);
+		//Create_organic_sin_frequenc_based(pobj);
+
+		Create_classical_jasna_1_style_ring(pobj);
 	}
 }
 
