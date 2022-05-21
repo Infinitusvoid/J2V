@@ -59,6 +59,13 @@ namespace Cosmos::ArtGallery_3d
 		Cosmos::Elements_3d::CreateRing(ring_info, pobj);
 	}
 
+	//TODO classical jasna 1 style ring
+	void Create_classical_jasna_1_style_ring(Cosmos::Data_Types::Object3d_Data* pobj)
+	{
+
+	}
+
+
 	void Create(Cosmos::Data_Types::Object3d_Data* pobj)
 	{
 		Create_organic_sin_frequenc_based(pobj);
