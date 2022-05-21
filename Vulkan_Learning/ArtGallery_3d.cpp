@@ -5,18 +5,18 @@
 
 namespace Cosmos::ArtGallery_3d
 {
-	void Create(Cosmos::Data_Types::Object3d_Data* pobj)
+	void Create_organic_sin_frequenc_based(Cosmos::Data_Types::Object3d_Data* pobj)
 	{
 		//Cosmos::Operations_3d::AddRing(pobj);
 		Cosmos::Data_Types::Info::Ring_Info ring_info{};
 
 
-		
+
 		ring_info.radius_merge = 6.0f;
 
 		ring_info.num_x = 500;
 		ring_info.num_y = 500;
-		
+
 		//a
 		ring_info.radius_a = 3;
 
@@ -36,7 +36,7 @@ namespace Cosmos::ArtGallery_3d
 		ring_info.sinus_signals_angleAttribute_b_radius.push_back({ 3.0f, 0.4f, 0.0f });
 		ring_info.sinus_signals_angleAttribute_b_radius.push_back({ 15.0f, 0.2f, 0.0f });
 
-		ring_info.sinus_signals_lengthAttribute_b_radius.push_back({ 20.0f, 0.5f, 0.0f});
+		ring_info.sinus_signals_lengthAttribute_b_radius.push_back({ 20.0f, 0.5f, 0.0f });
 		ring_info.sinus_signals_lengthAttribute_b_radius.push_back({ 25.0f, 0.25f, 0.0f });
 
 		ring_info.interpolation_exponent_b = 2.0f;
@@ -57,6 +57,11 @@ namespace Cosmos::ArtGallery_3d
 		//glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
 
 		Cosmos::Elements_3d::CreateRing(ring_info, pobj);
+	}
+
+	void Create(Cosmos::Data_Types::Object3d_Data* pobj)
+	{
+		Create_organic_sin_frequenc_based(pobj);
 	}
 }
 
