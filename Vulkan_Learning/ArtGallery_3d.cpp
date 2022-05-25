@@ -102,7 +102,8 @@ namespace Cosmos::ArtGallery_3d
 			}
 			
 
-			result.radius_offset_a = pow( 0.3 * sin(angle * 25.0f) + 0.3 * sin(length * 3.1415f * 10 * 2), 4.0);
+			result.radius_offset_a = 0.0f;
+			//pow( 0.3 * sin(angle * 25.0f) + 0.3 * sin(length * 3.1415f * 10 * 2), 4.0);
 
 			//;
 			
