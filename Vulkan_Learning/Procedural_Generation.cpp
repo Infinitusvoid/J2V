@@ -10,7 +10,7 @@ namespace Proc
 	//We crate a circle made of quards
 	//
 
-	/
+	
 
 	Procedural_Generation::Procedural_Generation()
 	{
