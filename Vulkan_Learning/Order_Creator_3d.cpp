@@ -20,7 +20,8 @@ namespace Cosmos::Order_Creator_3d
 
         
 
-        Cosmos::ArtGallery_3d::Create(pobj);
+        Cosmos::ArtGallery_3d::Create(pobj, false);
+        Cosmos::ArtGallery_3d::Create(pobj, true);
 
 
         

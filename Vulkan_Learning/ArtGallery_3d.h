@@ -4,5 +4,5 @@
 
 namespace Cosmos::ArtGallery_3d
 {
-	void Create(Cosmos::Data_Types::Object3d_Data* pobj);
+	void Create(Cosmos::Data_Types::Object3d_Data* pobj, bool organic);
 }

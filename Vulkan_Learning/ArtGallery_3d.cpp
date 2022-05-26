@@ -56,7 +56,6 @@ namespace Cosmos::ArtGallery_3d
 		Cosmos::Elements_3d::CreateRing(ring_info, pobj);
 	}
 
-	//TODO classical jasna 1 style ring
 	void Create_classical_jasna_1_style_ring(Cosmos::Data_Types::Object3d_Data* pobj)
 	{
 		Data_Types::Info::Ring_Info_001 ring_info;
@@ -123,12 +122,17 @@ namespace Cosmos::ArtGallery_3d
 		Cosmos::Elements_3d::CreateRing_001(ring_info, pobj);
 	}
 
-
-	void Create(Cosmos::Data_Types::Object3d_Data* pobj)
+	void Create(Cosmos::Data_Types::Object3d_Data* pobj, bool organic)
 	{
-		Create_organic_sin_frequenc_based(pobj);
-
-		Create_classical_jasna_1_style_ring(pobj);
+		if (organic)
+		{
+			Create_organic_sin_frequenc_based(pobj);
+		}
+		else
+		{
+			Create_classical_jasna_1_style_ring(pobj);
+		}
+		
 	}
 }
 
