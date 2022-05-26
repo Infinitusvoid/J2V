@@ -10,31 +10,7 @@ namespace Proc
 	//We crate a circle made of quards
 	//
 
-	/// <summary>
-	/// I LIke it 
-	/// </summary>
-	class Coffee {
-
-	public:
-		/// <summary>
-		/// NJa 
-		/// </summary>
-		void Neki()
-		{
-
-		}
-
-		
-		void grr()
-		{
-
-		}
-
-		void pipi0(int radij, int diameter, int kava, float jupi) {
-			
-		}
-	};
-
+	/
 
 	Procedural_Generation::Procedural_Generation()
 	{
@@ -51,15 +27,7 @@ namespace Proc
 		// 
 		//
 
-		Coffee a;
-		int t = 20;
-		a.pipi0(t, 20, 30, 20);
-		a.pipi0(5, 2, 3, 1);
-
-
-		//Coffee c;
-		//c.Neki();
-
+		
 		/*
 		Procedural_ObjectData* pobj = new Procedural_ObjectData();
 
