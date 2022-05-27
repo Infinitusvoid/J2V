@@ -13,7 +13,6 @@ namespace Proc
 	//
 
 	
-	static int cycle = 0;
 	Procedural_Generation::Procedural_Generation()
 	{
 		
@@ -88,15 +87,13 @@ namespace Proc
 		*/
 
 		
-		if (cycle % 10000 == 0 && cycle < 40000)
-		{
+		
 			
 
-			int i = (cycle / 10000);
-
+		
 			Cosmos::Data_Types::Object3d_Data* pobj = new Cosmos::Data_Types::Object3d_Data();
 
-			glm::vec3 pos = glm::vec3(0.0f, 0.0f, 20.0f * i);
+			glm::vec3 pos = glm::vec3(0.0f, 0.0f, 20.0f);
 			glm::vec3 rot = glm::vec3(0.0f, 0.0f, 0.0f);
 			glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
 
@@ -104,7 +101,7 @@ namespace Proc
 
 
 			data.push_back(pobj);
-		}
+		
 
 		
 
@@ -166,7 +163,7 @@ namespace Proc
 
 
 
-		cycle++;
+		
 	}
 
 	Procedural_Generation::~Procedural_Generation()
