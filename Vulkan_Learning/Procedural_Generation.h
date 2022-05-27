@@ -18,6 +18,5 @@ namespace Proc
 		~Procedural_Generation();
 
 		Cosmos::Data_Types::VectorOfPointers_PointingTo_Procedural_ObjectData data;
-	};
-	void NewFunction();
+	};	
 }

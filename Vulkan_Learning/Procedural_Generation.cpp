@@ -4,6 +4,8 @@
 //#include "Operations_3d.h"
 #include "Order_Creator_3d.h";
 
+
+
 namespace Proc
 {
 	//We create a quard by providing 4 points
@@ -11,9 +13,10 @@ namespace Proc
 	//
 
 	
-
+	static int cycle = 0;
 	Procedural_Generation::Procedural_Generation()
 	{
+		
 		//We call object 3d controller -> which calls something in Generative 3d collection ( example small_rnd_ring() )
 		//Generate 3d collection -> is using one or multiple calls into Elements 3d to generate a scene (this is the class that's holds functions
 		//representing art peaces ( think of it as gallery ) Chouls I rename it to ArtGallery or Gallery ? 
@@ -84,13 +87,28 @@ namespace Proc
 		float z = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 		*/
 
+		
+		if (cycle % 10000 == 0 && cycle < 40000)
+		{
+			
+
+			int i = (cycle / 10000);
+
+			Cosmos::Data_Types::Object3d_Data* pobj = new Cosmos::Data_Types::Object3d_Data();
+
+			glm::vec3 pos = glm::vec3(0.0f, 0.0f, 20.0f * i);
+			glm::vec3 rot = glm::vec3(0.0f, 0.0f, 0.0f);
+			glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
+
+			Cosmos::Order_Creator_3d::Create(pobj, pos, rot, scale);
 
 
-		Cosmos::Data_Types::Object3d_Data* pobj = new Cosmos::Data_Types::Object3d_Data();
+			data.push_back(pobj);
+		}
 
-		Cosmos::Order_Creator_3d::Create(pobj);
+		
 
-
+		
 
 		/*
 		 float x = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
@@ -144,11 +162,11 @@ namespace Proc
 		 //Proc::Opr::vertices_randomize_positions(pobj, 0.05f);
 
 
-		data.push_back(pobj);
+		
 
 
 
-
+		cycle++;
 	}
 
 	Procedural_Generation::~Procedural_Generation()
