@@ -26,6 +26,8 @@
 
 #include <iostream>
 
+#include <thread>
+
 namespace lve {
 
     
@@ -40,6 +42,9 @@ namespace lve {
     }
 
     FirstApp::~FirstApp() {}
+
+    
+
 
     void FirstApp::run() {
         std::vector<std::unique_ptr<LveBuffer>> uboBuffers(LveSwapChain::MAX_FRAMES_IN_FLIGHT);
@@ -80,7 +85,13 @@ namespace lve {
         viewerObject.transform.translation.z = -2.5f;
         KeyboardMovementController cameraController{};
 
-       
+        //cosmos
+        Cosmos::Tonix tonix;
+        //tonix->ca
+        //tonix.Calc();
+        //tonix->calc();
+        std::thread worker([&tonix]() {tonix.Calc(); });
+        //end cosmos
 
         auto currentTime = std::chrono::high_resolution_clock::now();
         while (!lveWindow.shouldClose()) {
@@ -145,6 +156,15 @@ namespace lve {
             }
         }
 
+        //Cosmos
+        std::cout << "YEY COSMOS" << std::endl;
+        tonix.continue_executing = false;
+        //Cosmos::Tonix::cosmos_compute = false;
+       
+        worker.join();
+        //Cosmos end
+
+
         vkDeviceWaitIdle(lveDevice.device());
     }
 
@@ -201,6 +221,8 @@ namespace lve {
         
 
     }
+
+   
 
   
     void FirstApp::My_ProcedurallyGenerateNewObject_2()

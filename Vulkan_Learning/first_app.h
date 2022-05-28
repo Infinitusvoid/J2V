@@ -12,6 +12,7 @@
 
 // Cosmos
 #include "Universe_Controller.h"
+#include "Tonix.h"
 
 namespace lve {
 	class FirstApp {
@@ -39,6 +40,8 @@ namespace lve {
 		Cosmos::Universe_Controller universe_con;
 		void My_ProcedurallyGenerateNewObject_2();
 		void My_ProcedurallyGenerateNewObject_Cosmos();
+		//static void My_Calc();
+		//std::make_unique<Cosmos::Tonix> tonix;
 		// -
 
 		// note: order of declarations matters

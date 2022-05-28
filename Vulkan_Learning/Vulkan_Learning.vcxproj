@@ -175,6 +175,7 @@
     <ClCompile Include="Elements_3d.cpp" />
     <ClCompile Include="Procedural_Generation.cpp" />
     <ClCompile Include="simple_render_system.cpp" />
+    <ClCompile Include="Tonix.cpp" />
     <ClCompile Include="Universe_Controller.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +202,7 @@
     <ClInclude Include="Elements_3d.h" />
     <ClInclude Include="Procedural_Generation.h" />
     <ClInclude Include="simple_render_system.h" />
+    <ClInclude Include="Tonix.h" />
     <ClInclude Include="Universe_Controller.h" />
     <ClInclude Include="Utilitys.h" />
   </ItemGroup>

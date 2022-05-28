@@ -1,6 +1,21 @@
 #pragma once
-class Tonix
+
+#include <thread>
+
+namespace Cosmos
 {
-	int a;
-};
+	class Tonix
+	{
+		//static bool njok;
+
+		public:
+			void Calc();
+			void doWork();
+			std::atomic<bool> continue_executing;
+	};
+	
+	
+	
+}
+
 

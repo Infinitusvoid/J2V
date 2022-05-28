@@ -45,9 +45,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lve_window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="first_app.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -107,6 +104,12 @@
     </ClCompile>
     <ClCompile Include="Universe_Controller.cpp">
       <Filter>Source Files\Cosmos\Universe_Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="lve_window.cpp">
+      <Filter>Source Files\Cosmos</Filter>
+    </ClCompile>
+    <ClCompile Include="Tonix.cpp">
+      <Filter>Source Files\Cosmos</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="Data_Types.h">
       <Filter>Source Files\Cosmos\Data_Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Tonix.h">
+      <Filter>Source Files\Cosmos</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
