@@ -90,7 +90,7 @@ namespace lve {
         //tonix->ca
         //tonix.Calc();
         //tonix->calc();
-        std::thread worker([&tonix]() {tonix.Calc(); });
+        std::thread worker([&tonix]() {tonix.run(); });
         //end cosmos
 
         auto currentTime = std::chrono::high_resolution_clock::now();

@@ -6,11 +6,8 @@ namespace Cosmos
 {
 	class Tonix
 	{
-		//static bool njok;
-
 		public:
-			void Calc();
-			void doWork();
+			void run();
 			std::atomic<bool> continue_executing;
 	};
 	
