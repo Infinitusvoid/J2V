@@ -25,9 +25,60 @@ namespace Cosmos
 
 	}
 
+	void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+	{
+		std::cout << "scroll_callback xoffset : " << xoffset << " yoffset : " << yoffset << std::endl;
+	}
+
 	void Universe_Controller::loop(GLFWwindow* window, lve::FrameInfo& frameInfo)
 	{
+		// learning keybord input
+		{
+			int state = glfwGetKey(window, GLFW_KEY_T);
+			if (state == GLFW_PRESS)
+			{
+			//	std::cout << "key T pressed!" << std::endl;
+			}
+			else if (state == GLFW_RELEASE)
+			{
+			//	std::cout << "key T released!" << std::endl;
+			}
+		}
 
+		//mouse position
+		{
+			double xpos, ypos;
+			glfwGetCursorPos(window, &xpos, &ypos);
+			//std::cout << "xpos : " << xpos << " ypos : " << ypos << std::endl;
+		}
+
+		{
+			int state = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
+			if (state == GLFW_PRESS)
+			{
+				std::cout << "Mouse left click!" << std::endl;
+			}
+		}
+
+		{
+			int state = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT);
+			if (state == GLFW_PRESS)
+			{
+				std::cout << "Mouse right click!" << std::endl;
+			}
+		}
+
+		{
+			int state = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_MIDDLE);
+			if (state == GLFW_PRESS)
+			{
+				std::cout << "Mouse middle click!" << std::endl;
+			}
+		}
+
+		glfwSetScrollCallback(window, scroll_callback);
+		
+		// end learning keybord input
 
 		//std::cout << "Frame : " << frameInfo.frameIndex << "\n"; //It's just oscilating betwen 0 and 1
 		//std::cout << "Time for one frame" << frameInfo.frameTime << "\n";
