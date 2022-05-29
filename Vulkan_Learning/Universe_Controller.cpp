@@ -10,42 +10,45 @@
 
 #include "first_app.h"
 
-
+#include <functional>
 
 namespace Cosmos
 {
-	
+	namespace UI_GLFW_GLOBAL
+	{
+		Universe_Controller* uc;
+
+		static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+		{
+			if (uc != nullptr)
+			{
+				uc->scroll_callback_2(yoffset);
+			}
+		}
+	}
+
+
 	Universe_Controller::Universe_Controller()
 	{
 		first_loop_cycle = true;
+		Cosmos::UI_GLFW_GLOBAL::uc = this;
 	}
 
 	Universe_Controller::~Universe_Controller()
 	{
-
+		Cosmos::UI_GLFW_GLOBAL::uc = nullptr;
 	}
 
-	// callback methods
-	/*
-	void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+
+	void Universe_Controller::scroll_callback_2(float y)
 	{
-		std::cout << "scroll_callback xoffset : " << xoffset << " yoffset : " << yoffset << std::endl;
+		std::cout << "Callback y : " << y << std::endl;
 	}
-	*/
 	
-	// end callback
-
 	void Universe_Controller::init(GLFWwindow* window, lve::FrameInfo& frameInfo)
 	{
 		std::cout << "-- Init --" << std::endl;
-
-		auto lambda = [](GLFWwindow* window, double xoffset, double yoffset) {
-			std::cout << "JUPIJ xoffset : " << xoffset << " yoffset : " << yoffset << std::endl;
-		};
-
-
-		//glfwSetScrollCallback(window, scroll_callback);
-		glfwSetScrollCallback(window, lambda);
+		glfwSetScrollCallback(window, Cosmos::UI_GLFW_GLOBAL::scroll_callback);
 
 	}
 
@@ -57,7 +60,7 @@ namespace Cosmos
 			init(window, frameInfo);
 		}
 
-
+		//std::cout << "offset Y " << UI_GLFW_GLOBAL::y_offset << std::endl;
 
 		//TODO make is using callback insted of this
 		// learning keybord input

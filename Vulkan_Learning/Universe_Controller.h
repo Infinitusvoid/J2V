@@ -20,8 +20,14 @@ namespace Cosmos
 
 			bool call_generate = false;
 
+			void scroll_callback_2(float y);
+
 		private:
 			void init(GLFWwindow* window, lve::FrameInfo& frameInfo);
+
+			
+
+			
 
 			float ellapsed_time{};
 			bool first_loop_cycle;
