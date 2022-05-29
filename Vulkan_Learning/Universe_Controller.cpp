@@ -25,13 +25,41 @@ namespace Cosmos
 
 	}
 
+	// callback methods
+	/*
 	void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 	{
 		std::cout << "scroll_callback xoffset : " << xoffset << " yoffset : " << yoffset << std::endl;
 	}
+	*/
+	
+	// end callback
+
+	void Universe_Controller::init(GLFWwindow* window, lve::FrameInfo& frameInfo)
+	{
+		std::cout << "-- Init --" << std::endl;
+
+		auto lambda = [](GLFWwindow* window, double xoffset, double yoffset) {
+			std::cout << "JUPIJ xoffset : " << xoffset << " yoffset : " << yoffset << std::endl;
+		};
+
+
+		//glfwSetScrollCallback(window, scroll_callback);
+		glfwSetScrollCallback(window, lambda);
+
+	}
 
 	void Universe_Controller::loop(GLFWwindow* window, lve::FrameInfo& frameInfo)
 	{
+		if (first_loop_cycle)
+		{
+			first_loop_cycle = false; //TODO : it would be cool if I could somehow have varible that I can only set to false never to true
+			init(window, frameInfo);
+		}
+
+
+
+		//TODO make is using callback insted of this
 		// learning keybord input
 		{
 			int state = glfwGetKey(window, GLFW_KEY_T);
@@ -75,15 +103,6 @@ namespace Cosmos
 				std::cout << "Mouse middle click!" << std::endl;
 			}
 		}
-		
-		if (first_loop_cycle)
-		{
-			glfwSetScrollCallback(window, scroll_callback); //TODO we probably don't have to see calback every frame so just set it first time
-			std::cout << "First loop cycle !" << std::endl;
-
-			first_loop_cycle = false;
-		}
-		
 		
 		// end learning keybord input
 

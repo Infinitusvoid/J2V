@@ -12,6 +12,7 @@ namespace Cosmos
 			Universe_Controller();
 			~Universe_Controller();
 
+			
 			void loop(GLFWwindow* window, lve::FrameInfo& frameInfo);
 
 
@@ -20,6 +21,8 @@ namespace Cosmos
 			bool call_generate = false;
 
 		private:
+			void init(GLFWwindow* window, lve::FrameInfo& frameInfo);
+
 			float ellapsed_time{};
 			bool first_loop_cycle;
 	};
