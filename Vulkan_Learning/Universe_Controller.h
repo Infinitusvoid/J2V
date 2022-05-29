@@ -21,6 +21,7 @@ namespace Cosmos
 
 		private:
 			float ellapsed_time{};
+			bool first_loop_cycle;
 	};
 
 }

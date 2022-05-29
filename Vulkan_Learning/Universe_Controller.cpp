@@ -17,7 +17,7 @@ namespace Cosmos
 	
 	Universe_Controller::Universe_Controller()
 	{
-
+		first_loop_cycle = true;
 	}
 
 	Universe_Controller::~Universe_Controller()
@@ -75,8 +75,15 @@ namespace Cosmos
 				std::cout << "Mouse middle click!" << std::endl;
 			}
 		}
+		
+		if (first_loop_cycle)
+		{
+			glfwSetScrollCallback(window, scroll_callback); //TODO we probably don't have to see calback every frame so just set it first time
+			std::cout << "First loop cycle !" << std::endl;
 
-		glfwSetScrollCallback(window, scroll_callback);
+			first_loop_cycle = false;
+		}
+		
 		
 		// end learning keybord input
 
