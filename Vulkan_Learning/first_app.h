@@ -40,6 +40,7 @@ namespace lve {
 		Cosmos::Universe_Controller universe_con;
 		void My_ProcedurallyGenerateNewObject_2();
 		void My_ProcedurallyGenerateNewObject_Cosmos();
+		void My_ProceduralReadFromTonix(const Cosmos::Tonix& tonix);
 		//static void My_Calc();
 		//std::make_unique<Cosmos::Tonix> tonix;
 		// -

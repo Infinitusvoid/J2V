@@ -87,10 +87,8 @@ namespace lve {
 
         //cosmos
         Cosmos::Tonix tonix;
-        //tonix->ca
-        //tonix.Calc();
-        //tonix->calc();
-        std::thread worker([&tonix]() {tonix.run(); });
+        //std::thread worker([&tonix]() {tonix.run_foo(); });
+        std::thread worker([&tonix]() { tonix.run(); });
         //end cosmos
 
         auto currentTime = std::chrono::high_resolution_clock::now();
@@ -107,6 +105,26 @@ namespace lve {
 
             if (glfwGetKey(lveWindow.getGLFWwindow(), GLFW_KEY_SPACE) == GLFW_PRESS) { //GLFW_KEY_K) == GLFW_PRESS) { // I Need to remove this
                 My_ProcedurallyGenerateNewObject_2();
+            }
+
+            if (glfwGetKey(lveWindow.getGLFWwindow(), GLFW_KEY_R) == GLFW_PRESS)
+            {
+                //std::cout << "press the key R" << std::endl;
+                if (tonix.state == Cosmos::Tonix::state_idle)
+                {
+                    tonix.state = Cosmos::Tonix::state_compute;
+                }
+                
+
+            }
+
+            if (tonix.state == Cosmos::Tonix::state_done)
+            {
+                //read data, after all data is read set it to idle
+                My_ProceduralReadFromTonix(tonix);
+                std::cout << "Computation in tonix done read data!" << std::endl;
+                tonix.state = Cosmos::Tonix::state_idle;
+                
             }
             // Cosmos
 
@@ -222,7 +240,62 @@ namespace lve {
 
     }
 
-   
+    
+    void FirstApp::My_ProceduralReadFromTonix(const Cosmos::Tonix& tonix)
+    {
+        
+        if (tonix.model_builders.size() > 0)
+        {
+            for (int i = 0; i < tonix.model_builders.size(); i++)
+            {
+                std::shared_ptr<Lve_model> lveModel = std::make_unique<Lve_model>(lveDevice, *tonix.model_builders[i]);
+                auto proc_gm = LveGameObject::createGameObject();
+                proc_gm.model = lveModel;
+                proc_gm.transform.translation = tonix.data[i]->position;
+                proc_gm.transform.scale = tonix.data[i]->scale;
+                proc_gm.transform.rotation = tonix.data[i]->rotation;
+                gameObjects.emplace(proc_gm.getId(), std::move(proc_gm));
+            }
+        }
+        
+
+        //if (tonix.data.size() > 0)
+        //{
+        //    for (Cosmos::Data_Types::Object3d_Data* data_obj : tonix.data)//for (Proc::Procedural_ObjectData* data_obj : pc.data)
+        //    {
+        //        Lve_model::Builder modelBuilder{};
+        //        //modelBuilder.vertices = std::vector<Lve_model::Vertex>(data_obj->vertices.size());
+        //        
+        //        
+        //        //int size = data_obj->vertices.size();//data_obj->vertices.size();
+
+        //       
+
+        //        modelBuilder.vertices = std::vector<Lve_model::Vertex>();//size);
+        //        for (const Cosmos::Data_Types::Vert& vert : data_obj->vertices)//for (const Proc::Vert& vert : data_obj->vertices)
+        //        {
+        //            modelBuilder.vertices.push_back(
+        //                {  { vert.position.x, vert.position.y, vert.position.z },
+        //                                                { vert.color.r, vert.color.g, vert.color.b },
+        //                                                { vert.normal.x, vert.normal.y, vert.normal.z}
+        //                                             } 
+        //            );
+        //        }
+
+        //        modelBuilder.indices = std::vector<uint32_t>(data_obj->indices);
+
+        //        std::shared_ptr<Lve_model> lveModel = std::make_unique<Lve_model>(lveDevice, modelBuilder);
+        //        auto proc_gm = LveGameObject::createGameObject();
+        //        proc_gm.model = lveModel;
+        //        proc_gm.transform.translation = data_obj->position;
+        //        proc_gm.transform.scale = data_obj->scale;
+        //        proc_gm.transform.rotation = data_obj->rotation;
+        //        //gameObjects.push_back(std::move(proc_gm));
+        //        gameObjects.emplace(proc_gm.getId(), std::move(proc_gm));
+        //    }
+        //}
+    }
+
 
   
     void FirstApp::My_ProcedurallyGenerateNewObject_2()
