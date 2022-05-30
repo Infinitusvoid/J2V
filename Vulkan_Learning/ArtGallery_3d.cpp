@@ -39,20 +39,14 @@ namespace Cosmos::ArtGallery_3d
 		ring_info.interpolation_exponent_b = 2.0f;
 
 		//radius, amp1, amp2, angle, length
-		//std::function<glm::vec3(float, float, float, float)> f_color_a;
-		//std::function<glm::vec3(float, float, float, float)> f_color_b;
 		ring_info.f_color_a = [](float radius, float amp1, float amp2, float angle, float length) {
-			//return glm::vec3(0.01f, 0.8f, 0.3f);
 			return glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
 		};
-		//v1_out_color = glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
-
+		
 		ring_info.f_color_b = [](float radius, float amp1, float amp2, float angle, float length) {
-			//return glm::vec3(0.01f, 0.8f, 0.3f);
 			return glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.4f);
 		};
-		//glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
-
+		
 		Cosmos::Elements_3d::CreateRing(ring_info, pobj);
 	}
 
@@ -68,7 +62,6 @@ namespace Cosmos::ArtGallery_3d
 		ring_info.radius_merge = (ring_info.radius_a + ring_info.radius_b) * 0.5f;
 		ring_info.length_multiplier = 3.0f;
 
-		//std::function<void(float angle, float length, Ring_Info_001_f_Result& result)> f;
 		ring_info.f = [](float angle, float length, Data_Types::Info::Ring_Info_001_f_Result& result)
 		{
 			result.color_a_r = 0.01f;
@@ -102,12 +95,7 @@ namespace Cosmos::ArtGallery_3d
 			
 
 			result.radius_offset_a = 0.0f;
-			//pow( 0.3 * sin(angle * 25.0f) + 0.3 * sin(length * 3.1415f * 10 * 2), 4.0);
-
-			//;
-			
-			
-			//std::abs(angle)
+						
 			result.radius_offset_b = std::fmax((pow(std::fabs(fmod(std::fabs(length * 10), 1) - 0.5f) * 2, 6) - 0.3f) * (-1.0f), 0) * 0.1f;
 			
 			if ((result.radius_offset_b * 10.0 ) - 0.05 < 0)

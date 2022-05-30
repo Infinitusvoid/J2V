@@ -1,6 +1,6 @@
 #include "Operations_3d.h"
 
-//glm
+// glm
 #include <glm/gtc/constants.hpp>
 
 // std
@@ -89,8 +89,6 @@ namespace Cosmos::Operations_3d
 		data->indices.push_back(start_pos_vertex + 2);
 		data->indices.push_back(start_pos_vertex + 3);
 		data->indices.push_back(start_pos_vertex + 0);
-		//data->indices.pop_back(10);
-
 	}
 
 	void add_quad(
@@ -156,8 +154,7 @@ namespace Cosmos::Operations_3d
 
 		data->indices.push_back(start_pos_vertex + 2);
 		data->indices.push_back(start_pos_vertex + 3);
-		data->indices.push_back(start_pos_vertex + 0);
-		//data->indices.pop_back(10);
+		data->indices.push_back(start_pos_vertex + 0);		
 
 	}
 
@@ -303,106 +300,9 @@ namespace Cosmos::Operations_3d
 
 			}
 		}
-
-		//v0 = glm::vec3(0.0f, -0.18f, 0.0f);
-		//v1 = glm::vec3(0.0f, -0.18f, 1.0f);
-		//v2 = glm::vec3(1.0f, -0.18f, 1.0f);
-		//v3 = glm::vec3(1.0f, -0.18f, 0.0f);
-		//add_quad_rnd_color(data, v0, v1, v2, v3);
 	}
 
-	/*
-	void ring_001(Mesh data, const int num_x, const int num_y)
-	{
-		const float x_proc = 1.0f / (float)num_x;
-		const float y_proc = 1.0f / (float)num_y;
-
-		auto lambda = [x_proc, y_proc](glm::vec3 v, glm::vec3& v1_out, glm::vec3& v1_out_color, glm::vec3& v2_v_out, glm::vec3& v2_out_color) {
-
-
-
-			v.x *= x_proc;// * 5.0;
-			v.z *= y_proc;// * 5.0;
-
-			const float angle = v.x * glm::two_pi<float>();
-			const float length = v.z;
-
-			// v1
-			float amp_modul = 1.0f +
-				0.015 * sin(length * glm::two_pi<float>() * 10) +
-				0.100 * sin(angle * 15) +
-				0.025 * sin(angle * 22);
-
-
-			float lerp_fak = 1 - (abs(length - 0.5f) * 2);
-			lerp_fak = pow(lerp_fak, 0.4f);
-
-			float val = std::lerp(0.5f, amp_modul, lerp_fak);
-
-			amp_modul = val;
-
-			v.x = amp_modul * glm::sin(angle);
-			v.y = amp_modul * glm::cos(angle);
-			v.z = length * 10.0f;
-
-
-
-			v.y += -0.15f;
-
-			v1_out = v;
-			v1_out_color = glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
-
-
-			v1_out_color += (glm::vec3(rand() / static_cast<float>(RAND_MAX),
-				rand() / static_cast<float>(RAND_MAX),
-				rand() / static_cast<float>(RAND_MAX)) *
-				glm::vec3(0.2f, 0.2f, 0.2f));
-
-			// v1 end
-
-
-			// v2
-
-			float amp_modul_2 = 2.0f +
-				0.015 * sin(length * glm::two_pi<float>() * 16) +
-				0.015 * sin(length * glm::two_pi<float>() * 6) +
-				0.1 * sin(angle * 7) +
-				0.025 * sin(angle * 4);
-
-
-			float lerp_fak_2 = 1 - (abs(length - 0.5f) * 2);
-			lerp_fak_2 = pow(lerp_fak_2, 0.33f);
-
-			float val2 = std::lerp(0.5f, amp_modul_2, lerp_fak_2);
-
-			amp_modul_2 = val2;
-
-			v2_v_out.x = amp_modul_2 * glm::sin(angle);
-			v2_v_out.y = amp_modul_2 * glm::cos(angle);
-			v2_v_out.z = length * 10.0f;
-
-			v2_v_out.y += -0.15f;
-
-			v2_v_out = v2_v_out;
-
-			v2_out_color = glm::vec3(1.0, 0.5, 0.1f);
-			v2_out_color += (glm::vec3(rand() / static_cast<float>(RAND_MAX),
-				rand() / static_cast<float>(RAND_MAX),
-				rand() / static_cast<float>(RAND_MAX)) *
-				glm::vec3(0.2f, 0.2f, 0.2f));
-
-
-			v2_out_color *= glm::vec3(
-				0.0,
-				1.0f * glm::sin(angle * 25) * glm::sin(length * 25) + 0.2f * glm::sin(angle * 25 + glm::sin(length * 215)) + 0.05f * glm::sin(angle * 125 + glm::sin(length * 615)),
-				pow(glm::sin(sin(angle * 15) * sin(length * 10) * 25), 4)
-			);
-			// v2 end
-		};
-
-		add_double_layer_grid(data, num_x, num_y, lambda);
-	}
-	*/
+	
 
 	void ring_000(
 		Mesh data,
@@ -449,8 +349,6 @@ namespace Cosmos::Operations_3d
 				}
 				amp_modul_a += amp_a_0 + amp_a_1;
 				//radius, amp1, amp2, angle, length
-
-				//v1_out_color = glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
 				v1_out_color = ring_info.f_color_a(ring_info.radius_a, amp_a_0, amp_a_1, angle, length);
 
 				float lerp_fak = 1 - (abs(length - 0.5f) * 2);
@@ -507,62 +405,12 @@ namespace Cosmos::Operations_3d
 				v2_v_out.y = amp_modul_b * glm::cos(angle);
 				v2_v_out.z = length * 10;
 
-
-				//v2_out_color = glm::vec3(0.2, 0.8 + 0.3 * glm::sin(length * 100 + 0.1f * sin(angle * 100)), 0.1f);
 			}
 
 			
 
 
-			/*
-			v1_out_color += (glm::vec3(rand() / static_cast<float>(RAND_MAX),
-				rand() / static_cast<float>(RAND_MAX),
-				rand() / static_cast<float>(RAND_MAX)) *
-				glm::vec3(0.2f, 0.2f, 0.2f));
-			*/
-
-			// v1 end
-
-
-			// v2
-			/*
-			float amp_modul_2 = 2.0f +
-				0.015 * sin(length * glm::two_pi<float>() * 16) +
-				0.015 * sin(length * glm::two_pi<float>() * 6) +
-				0.1 * sin(angle * 7) +
-				0.025 * sin(angle * 4);
-
-
-			float lerp_fak_2 = 1 - (abs(length - 0.5f) * 2);
-			lerp_fak_2 = pow(lerp_fak_2, 0.33f);
-
-			float val2 = std::lerp(0.5f, amp_modul_2, lerp_fak_2);
-
-			amp_modul_2 = val2;
-
-			v2_v_out.x = 0.0f * amp_modul_2 * glm::sin(angle);
-			v2_v_out.y = 0.0f * amp_modul_2 * glm::cos(angle);
-			v2_v_out.z = 0.0f * length * 10.0f;
-
-			v2_v_out.y += -0.15f;
-
-			v2_v_out = v2_v_out;
-
-			v2_out_color = glm::vec3(1.0, 0.5, 0.1f);
-			v2_out_color += (glm::vec3(rand() / static_cast<float>(RAND_MAX),
-				rand() / static_cast<float>(RAND_MAX),
-				rand() / static_cast<float>(RAND_MAX)) *
-				glm::vec3(0.2f, 0.2f, 0.2f));
-
-
-			v2_out_color *= glm::vec3(
-				0.0,
-				1.0f * glm::sin(angle * 25) * glm::sin(length * 25) + 0.2f * glm::sin(angle * 25 + glm::sin(length * 215)) + 0.05f * glm::sin(angle * 125 + glm::sin(length * 615)),
-				pow(glm::sin(sin(angle * 15) * sin(length * 10) * 25), 4)
-			);
-			*/
-
-			// v2 end
+			
 		};
 
 		add_double_layer_grid(data, num_x, num_y, lambda);

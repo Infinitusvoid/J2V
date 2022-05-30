@@ -25,15 +25,6 @@ namespace Cosmos {
 
 	void Tonix::run_computation()
 	{
-		/*
-		int sum = 0;
-		for (int i = 0; i < 1000000000; i++)
-		{
-			sum += i;
-		}
-		*/
-
-
 		float y = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 
 		Cosmos::Data_Types::Object3d_Data* pobj = new Cosmos::Data_Types::Object3d_Data();

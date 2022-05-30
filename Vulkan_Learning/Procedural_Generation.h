@@ -5,7 +5,7 @@
 #include <glm/glm.hpp>
 #include <vector>
 
-#include <math.h>       /* sin */
+#include <math.h>
 
 #include "Data_Types.h"
 
