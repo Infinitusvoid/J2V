@@ -116,7 +116,7 @@ namespace Cosmos {
 			}
 			else if (state == state_compute)
 			{
-				std::cout << "Coffe is nice from Tonix!";
+				std::cout << "Tonix::run() State:state_compute" << std::endl;
 
 				state = state_busy;
 				run_computation();
