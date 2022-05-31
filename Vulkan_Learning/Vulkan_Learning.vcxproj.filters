@@ -102,14 +102,14 @@
     <ClCompile Include="Operations_3d.cpp">
       <Filter>Source Files\Cosmos\Operations_3d</Filter>
     </ClCompile>
-    <ClCompile Include="Universe_Controller.cpp">
-      <Filter>Source Files\Cosmos\Universe_Controller</Filter>
-    </ClCompile>
     <ClCompile Include="lve_window.cpp">
       <Filter>Source Files\Cosmos</Filter>
     </ClCompile>
     <ClCompile Include="Tonix.cpp">
       <Filter>Source Files\Cosmos</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Source Files\Cosmos\Universe_Controller</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,9 +176,6 @@
     <ClInclude Include="Operations_3d.h">
       <Filter>Source Files\Cosmos\Operations_3d</Filter>
     </ClInclude>
-    <ClInclude Include="Universe_Controller.h">
-      <Filter>Source Files\Cosmos\Universe_Controller</Filter>
-    </ClInclude>
     <ClInclude Include="Utilitys.h">
       <Filter>Source Files\Cosmos\Utilitys</Filter>
     </ClInclude>
@@ -190,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="Tonix.h">
       <Filter>Source Files\Cosmos</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>Source Files\Cosmos\Universe_Controller</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

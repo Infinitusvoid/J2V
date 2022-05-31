@@ -1,58 +1,33 @@
-#include "Universe_Controller.h"
+#include "Controller.h"
 
-#include "MemoryLoger.h"
+//#include "MemoryLoger.h"
 
 #include <iostream>
 #include <memory>
-
-#include "Procedural_Generation.h"
-//#include "Lve_model.h"
-
-#include "first_app.h"
-
 #include <functional>
 
-namespace Cosmos
+#include "Procedural_Generation.h"
+
+
+namespace Cosmos::Controller
 {
-	namespace UI_GLFW_GLOBAL
-	{
-		Universe_Controller* uc;
+	static float ellapsed_time{};
+	static bool first_loop_cycle;
+	static bool call_generate;
 
-		static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
-		{
-			if (uc != nullptr)
-			{
-				uc->scroll_callback_2(yoffset);
-			}
-		}
-	}
-
-
-	Universe_Controller::Universe_Controller()
+	void Initialization()
 	{
 		first_loop_cycle = true;
-		Cosmos::UI_GLFW_GLOBAL::uc = this;
 	}
 
-	Universe_Controller::~Universe_Controller()
+
+	void init(GLFWwindow* window, lve::FrameInfo& frameInfo)
 	{
-		Cosmos::UI_GLFW_GLOBAL::uc = nullptr;
+		std::cout << "DONE initisss!" << std::endl;
+		glfwSetScrollCallback(window, scroll_callback);
 	}
 
-
-	void Universe_Controller::scroll_callback_2(float y)
-	{
-		std::cout << "Callback y : " << y << std::endl;
-	}
-	
-	void Universe_Controller::init(GLFWwindow* window, lve::FrameInfo& frameInfo)
-	{
-		std::cout << "-- Init --" << std::endl;
-		glfwSetScrollCallback(window, Cosmos::UI_GLFW_GLOBAL::scroll_callback);
-
-	}
-
-	void Universe_Controller::loop(GLFWwindow* window, lve::FrameInfo& frameInfo)
+	void loop(GLFWwindow* window, lve::FrameInfo& frameInfo)
 	{
 		if (first_loop_cycle)
 		{
@@ -68,11 +43,11 @@ namespace Cosmos
 			int state = glfwGetKey(window, GLFW_KEY_T);
 			if (state == GLFW_PRESS)
 			{
-			//	std::cout << "key T pressed!" << std::endl;
+				//	std::cout << "key T pressed!" << std::endl;
 			}
 			else if (state == GLFW_RELEASE)
 			{
-			//	std::cout << "key T released!" << std::endl;
+				//	std::cout << "key T released!" << std::endl;
 			}
 		}
 
@@ -106,7 +81,7 @@ namespace Cosmos
 				std::cout << "Mouse middle click!" << std::endl;
 			}
 		}
-		
+
 		// end learning keybord input
 
 		//std::cout << "Frame : " << frameInfo.frameIndex << "\n"; //It's just oscilating betwen 0 and 1
@@ -115,7 +90,7 @@ namespace Cosmos
 
 
 		if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS) {
-			this->call_generate = true;
+			call_generate = true;
 		}
 
 		// - Deleting objects
@@ -143,7 +118,7 @@ namespace Cosmos
 		}
 
 		//MY - delete unmapped object market for deleting
-		
+
 		unsigned int id_to_delete;
 		bool delete_the_id = false;
 		for (auto& kv : frameInfo.gameObjects) {
@@ -161,27 +136,28 @@ namespace Cosmos
 
 		if (delete_the_id)
 		{
-			
-			frameInfo.gameObjects.erase(id_to_delete);
-			
-			std::cout << "After erase gameObjects size : " << frameInfo.gameObjects.size() << "\n";
-			std::cout << "Memory current usage : " << s_allocationsMetrics.CurrentUsage() << "\n";
-		}
-		
-		
 
-		/*
-		for (int i = 0; i < gameObjects.size(); i++)
-		{
-			if (gameObjects[i].my_to_be_deleted_as_unmaped)
-			{
-				gameObjects.erase(gameObjects.begin() + i);
-				break;
-			}
+			frameInfo.gameObjects.erase(id_to_delete);
+
+			//std::cout << "After erase gameObjects size : " << frameInfo.gameObjects.size() << "\n";
+			//std::cout << "Memory current usage : " << s_allocationsMetrics.CurrentUsage() << "\n";
 		}
-		*/
-		
 
 	}
-}
 
+	void set_generate(bool value)
+	{
+		call_generate = value;
+	}
+
+	bool get_generate_value()
+	{
+		return call_generate;
+	}
+
+	void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+	{
+		std::cout << "F Callback y : " << yoffset << std::endl;
+	}
+
+}

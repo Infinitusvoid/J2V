@@ -11,7 +11,7 @@
 #include <vector>
 
 // Cosmos
-#include "Universe_Controller.h"
+#include "Controller.h"
 #include "Tonix.h"
 
 namespace lve {
@@ -37,7 +37,6 @@ namespace lve {
 
 		
 		// - Cosmos
-		Cosmos::Universe_Controller universe_con;
 		void My_ProcedurallyGenerateNewObject_2();
 		void My_ProcedurallyGenerateNewObject_Cosmos();
 		void My_ProceduralReadFromTonix(const Cosmos::Tonix& tonix);

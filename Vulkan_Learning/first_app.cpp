@@ -86,6 +86,7 @@ namespace lve {
         KeyboardMovementController cameraController{};
 
         //cosmos
+        Cosmos::Controller::Initialization();
         Cosmos::Tonix tonix;
         //std::thread worker([&tonix]() {tonix.run_foo(); });
         std::thread worker([&tonix]() { tonix.run(); });
@@ -96,9 +97,9 @@ namespace lve {
             glfwPollEvents();
 
             // Cosmos
-            if (universe_con.call_generate)
+            if (Cosmos::Controller::get_generate_value())//universe_con.call_generate)
             {
-                universe_con.call_generate = false;
+                Cosmos::Controller::set_generate(false);
                 My_ProcedurallyGenerateNewObject_Cosmos();
                 std::cout << "Generated!" << std::endl;
             }
@@ -150,7 +151,7 @@ namespace lve {
                     gameObjects };
 
                 //cosmos update
-                universe_con.loop(lveWindow.getGLFWwindow(), frameInfo);
+                Cosmos::Controller::loop(lveWindow.getGLFWwindow(), frameInfo);
 
                 // update
                 GlobalUbo ubo{};

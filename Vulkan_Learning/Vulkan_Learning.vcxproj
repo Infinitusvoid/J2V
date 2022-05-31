@@ -155,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Controller.cpp" />
     <ClCompile Include="first_app.cpp" />
     <ClCompile Include="ArtGallery_3d.cpp" />
     <ClCompile Include="keybord_movement_controller.cpp" />
@@ -176,9 +177,9 @@
     <ClCompile Include="Procedural_Generation.cpp" />
     <ClCompile Include="simple_render_system.cpp" />
     <ClCompile Include="Tonix.cpp" />
-    <ClCompile Include="Universe_Controller.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Controller.h" />
     <ClInclude Include="Data_Types.h" />
     <ClInclude Include="first_app.h" />
     <ClInclude Include="ArtGallery_3d.h" />
@@ -203,7 +204,6 @@
     <ClInclude Include="Procedural_Generation.h" />
     <ClInclude Include="simple_render_system.h" />
     <ClInclude Include="Tonix.h" />
-    <ClInclude Include="Universe_Controller.h" />
     <ClInclude Include="Utilitys.h" />
   </ItemGroup>
   <ItemGroup>
